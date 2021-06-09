@@ -1,3 +1,4 @@
+![ERD](https://user-images.githubusercontent.com/75928328/121337307-0fbdc500-c925-11eb-8062-85ba6b9dcba4.png)
 
 # User Stories 
 ## Everyone - Project preparation: Download project starting files and setup everything before you go. 
