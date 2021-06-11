@@ -13,7 +13,9 @@ trello link:  https://trello.com/b/ZgibHdhW/tabadolandroid
 ## Domain Modeling 
 ## Wireframe:
 
-TO be Determined later 
+<img src="assets/first.png">
+<img src="assets/second.png">
+<img src="assets/third.png">
 
 
 # ER Diagram
