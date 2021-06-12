@@ -1,3 +1,74 @@
 <resources>
     <string name="app_name">Tabadol</string>
+    <string name="login">Login</string>
+    <string name="signup">Signup</string>
+    <string name="username">Username</string>
+    <string name="username_hint">Enter Username</string>
+    <string name="password">Password</string>
+    <string name="password_hint">Enter Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="confirm_password_hint">Confirm Password</string>
+    <string name="no_account_text">Don\'t have an account? </string>
+    <string name="have_account_text">Have an account already? </string>
+    <string name="firstname">First Name</string>
+    <string name="firstname_hint">Enter First Name</string>
+    <string name="lastname">Last Name</string>
+    <string name="lastname_hint">Enter Last Name</string>
+    <string name="email">Email</string>
+    <string name="email_hint">Enter Email</string>
+    <string name="phone">Phone</string>
+    <string name="phone_hint">Enter Phone</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="posts">posts</string>
+    <string name="post_details">Post Details</string>
+    <string name="discover_users">Discover Users</string>
+    <string name="type">Type:</string>
+    <string name="category">Category:</string>
+    <string name="date">Date:</string>
+    <string name="make_offer">Make Offer</string>
+    <string name="accept">Accept</string>
+    <string name="reject">Reject</string>
+    <string name="offers">Offers</string>
+    <string name="received">Received</string>
+    <string name="sent">Sent</string>
+    <string name="finished">Finished</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+    <string name="see_offers">See Offers</string>
+    <string name="add_post">Add Post</string>
+    <string name="service">Service</string>
+    <string name="product">Product</string>
+    <string name="product_service_hint">Product/Service Details…</string>
+
+    <!--    Categories -->
+    <string name="education">Education</string>
+    <string name="instructor">Instructor</string>
+    <string name="computer">Computer</string>
+    <string name="mobile">Mobile</string>
+    <string name="video">Video</string>
+    <string name="copy_writing">Product</string>
+    <string name="gaming">Gaming</string>
+    <string name="board_games">Board Games</string>
+    <string name="music">Music</string>
+    <string name="art">Art</string>
+    <string name="books">Books</string>
+    <string name="marketing">Marketing</string>
+    <string name="electronics">Electronics</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </resources>
