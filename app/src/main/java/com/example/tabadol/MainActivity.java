@@ -4,6 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,12 +25,15 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     // TODO: change this to posts url
-    public static final String URL ="tabadol.herokuapp.com/jposts";
+    public static final String URL ="https://tabadol1.herokuapp.com/jposts";
+    private static final String ALL_USERS = "https://tabadol1.herokuapp.com/jallUsers";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Toast.makeText(this, UserSession.sessionId, Toast.LENGTH_SHORT).show();
+        PostAsyncTask postAsyncTask = new PostAsyncTask();
+        postAsyncTask.execute();
 
 
     }//end onCreate()
@@ -34,15 +44,18 @@ public class MainActivity extends AppCompatActivity {
         protected ArrayList<Post> doInBackground(URL... urls) {
             URL url = createUrl(URL);
             String jsonResponse="";
+            ArrayList<Post> posts = new ArrayList<>();
+
             try{
-                if(url != null)
+                if(url != null) {
                     jsonResponse = makeHttpRequest(url);
-            } catch (IOException e) {
+                    posts = getPosts(jsonResponse);
+                }
+            } catch (IOException | JSONException e) {
                 e.printStackTrace();
             }
 
-            //TODO: change this later
-            return new ArrayList<>();
+            return posts;
         }
 
         @Override
@@ -50,8 +63,7 @@ public class MainActivity extends AppCompatActivity {
             if(posts == null)
                 return;
 
-            //TODO: display the posts on the screen
-
+            displayPosts(posts);
 
         }
         // create valid url to use later in HTTPRequest
@@ -91,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
                     inputStream.close();
                 }
             }
+            Log.v("json", jsonResponse);
             return jsonResponse;
         }
 
@@ -108,17 +121,42 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // TODO: create a method that read the json and convert it to posts
-        private ArrayList<Post> getPosts(String jsonResponse){
+        private ArrayList<Post> getPosts(String jsonResponse) throws JSONException {
             ArrayList<Post> posts = new ArrayList<>();
             // TODO: create the object from the json response;
+            JSONArray jsonPosts = new JSONArray(jsonResponse);
+//            Log.v("jsonPosts", jsonPosts.toString());
+            String body;
+            String category;
+            String type;
+            Integer weight;
+            Boolean available;
+            String createdAt;
 
-
+            for(int i=0; i<jsonPosts.length(); i++){
+                body = jsonPosts.getJSONObject(i).getString("body");
+                category = jsonPosts.getJSONObject(i).getString("category");
+                type = jsonPosts.getJSONObject(i).getString("type");
+                weight = jsonPosts.getJSONObject(i).getInt("weight");
+                available = jsonPosts.getJSONObject(i).getBoolean("available");
+                createdAt = jsonPosts.getJSONObject(i).getString("createdAt");
+                posts.add(new Post(body, category, type, weight, available, createdAt));
+            }
 
             return posts;
         }
 
 
     } //end PostAsyncTask
+
+    public void displayPosts(ArrayList<Post> posts){
+        for(Post post: posts){
+            Log.v("post", post.toString());
+        }
+        PostAdapter postAdapter = new PostAdapter(this, posts);
+        ListView listView = findViewById(R.id.listView);
+        listView.setAdapter(postAdapter);
+    }
 
 
 
