@@ -13,11 +13,14 @@ import retrofit2.http.GET;
 import retrofit2.http.HeaderMap;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Url;
 
 
 public interface TabadolAPI {
+
+
 
 
     @GET("jposts")
@@ -37,4 +40,47 @@ public interface TabadolAPI {
 
     @POST("testpostjson")
     Call<ResponseJson> testPostJson(@HeaderMap Map<String,String> headers, @Body AuthenticationRequest login);
+
+
+///
+    @GET("jallUsers")
+    Call<List<User>> getAllUsers(@HeaderMap Map<String,String> headers);
+
+    @GET("jfollowinglist/{username}")
+    Call<List<User>> getFollowingList (@HeaderMap Map<String,String> headers, @Path("username") String username);
+
+    @GET("jfollowerslist/{username}")
+    Call<List<User>> getFollowersList (@HeaderMap Map<String,String> headers, @Path("username") String username);
+
+    @GET("jreceivedoffers")
+    Call<List<ReceivedOffers>> getReceivedOffers(@HeaderMap Map<String,String> headers);
+
+    @GET("jsentoffers")
+    Call<List<SentOffers>>  getSentOffers(@HeaderMap Map<String,String> headers);
+
+    @GET("jacceptedoffers")
+    Call <List<FinishedOffers>> getFinishedOffers(@HeaderMap Map<String,String> headers);
+
+
+    @POST("jsignup")
+    Call<ResponseJson> signup(@Body SignupForm signup);
+
+
+
+    @POST("junfollow/{username}")
+    Call<ResponseJson> UnfollowUser(@HeaderMap Map<String,String> headers,@Path("username") String username);
+
+    // *********************************
+
+    @POST("jfollow/{username}")
+    Call<ResponseJson> FollowUser(@HeaderMap Map<String,String> headers,@Path("username") String username);
+
+    @POST("jrate/{username}")
+    Call<ResponseJson> RateUser(@HeaderMap Map<String,String> headers,@Path("username") String username, @Body RateUser rateValue);
+// ******************************************
+
+    @PUT("jedit-profile")
+    Call<User> EditProfile(@HeaderMap Map<String,String> headers, @Body EditProfileForm editProfile);
+
+
 }

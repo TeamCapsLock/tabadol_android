@@ -40,9 +40,31 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         MyRoutes myRoutes = MyRoutes.getMyRoutesInstanse(this);
+//        myRoutes.getJWT_token("ramayaser66", "1234");
+//        myRoutes.getJWT_token("mhd.sad", "1234");
+//        myRoutes.getJWT_token("A", "1234");
 //        myRoutes.getPosts();
-        myRoutes.getUser(2);
+//        myRoutes.getUser(2);
 //        displayPosts();
+
+//        myRoutes.getAllUsers();
+//        myRoutes.getFollowingList(myRoutes.getUsername());
+//        myRoutes.getFollowersList(myRoutes.getUsername());
+//        myRoutes.getReceivedOffers();
+//        myRoutes.getSentOffers();
+//        myRoutes.getFinishedOffers();
+//        myRoutes.signup("A","A@A.com","A","A","1234","1234","A","A","0791234567","https://res.cloudinary.com/saify/image/upload/v1539009756/icon.jpg");
+//        myRoutes.signup("B","B@B.com","B","B","1234","1234","B","B","0791234567","https://images.thdstatic.com/productImages/72b9aa15-5112-4dff-9639-b68170e00530/svn/house-numbers-address-letters-3582b-b-64_1000.jpg");
+//
+//            ***************************************
+//        *******************************************
+//    myRoutes.EditProfile("B","B","B","B","0781234567","https://images.thdstatic.com/productImages/72b9aa15-5112-4dff-9639-b68170e00530/svn/house-numbers-address-letters-3582b-b-64_1000.jpg");
+//
+//
+//        myRoutes.UnfollowUser("A");
+//            myRoutes.FollowUser("A");
+//            myRoutes.RateUser("mhd.sad", 4);
+
 
     }//end onCreate()
 
