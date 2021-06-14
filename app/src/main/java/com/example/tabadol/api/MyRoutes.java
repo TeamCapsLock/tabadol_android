@@ -18,20 +18,30 @@ import retrofit2.Response;
 
 public class MyRoutes {
 
-    String jwt = null;
-    Map<String, String> headers;
-    TabadolAPI tabadolAPI;
-    MyRetrofit retrofit;
-    Context context;
-    String username;
-    String password;
-    ArrayList<Post> posts;
-   public MyRoutes(Context context){
+    private String jwt = null;
+    private Map<String, String> headers;
+    private TabadolAPI tabadolAPI;
+    private MyRetrofit retrofit;
+    private Context context;
+    private String username;
+    private String password;
+    private ArrayList<Post> posts = null;
+
+    private static MyRoutes myRoutesInstanse = null;
+
+   private MyRoutes(Context context){
        this.retrofit = MyRetrofit.getInstance();
        this.tabadolAPI = retrofit.getApi();
        this.context = context;
        username = getUsernameFormSharedPreferences();
        password = getPasswordFormSharedPreferences();
+   }
+
+   public static MyRoutes getMyRoutesInstanse(Context context){
+       if (myRoutesInstanse == null)
+           myRoutesInstanse = new MyRoutes(context);
+
+       return myRoutesInstanse;
    }
 
 
@@ -66,7 +76,6 @@ public class MyRoutes {
                 // otherwise, it will throw an error
                 myEdit.commit();
 
-
             }
 
             @Override
@@ -79,7 +88,7 @@ public class MyRoutes {
     }
 
 
-    public ArrayList<Post> getPosts(){
+    public void getPosts(){
         headers = new HashMap<>();
         jwt = getJwtFormSharedPreferences();
 
@@ -94,7 +103,7 @@ public class MyRoutes {
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
 
                 Log.v("HTTP_Request: ","code: "+response.code());
-                posts = (ArrayList<Post>) response.body();
+                MyRoutes.this.posts = (ArrayList<Post>) response.body();
                 Log.v("HTTP_Request: ","all Post: "+posts.toString());
 
             }
@@ -112,7 +121,6 @@ public class MyRoutes {
                 return;
             }
         });
-        return posts;
     }
 
     public  void getLoggedInUser(){
@@ -236,7 +244,7 @@ public class MyRoutes {
     }
 
     public ArrayList<Post> getPost2(){
-       return posts;
+       return this.posts;
     }
 
 
