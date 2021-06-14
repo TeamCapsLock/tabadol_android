@@ -25,6 +25,7 @@ public class MyRoutes {
     private Context context;
     private String username;
     private String password;
+    private User user = null;
     private ArrayList<Post> posts = null;
     private ArrayList<User> allUsers = null;
     private ArrayList<User> followingList = null;
@@ -126,7 +127,6 @@ public class MyRoutes {
         });
     }
     public  void getLoggedInUser(){
-
         jwt = getJwtFormSharedPreferences();
         headers = new HashMap<>();
         headers.put("Authorization", "Bearer "+jwt);
@@ -137,6 +137,7 @@ public class MyRoutes {
             public void onResponse(Call<User> call, Response<User> response) {
                 Log.v("HTTP_Request: ","code: "+response.code());
                 Log.v("HTTP_Request: ","code: "+response.body().toString());
+                MyRoutes.this.user = response.body();
             }
 
             @Override
@@ -154,6 +155,7 @@ public class MyRoutes {
                 return;
             }
         });
+
     }
     public void getUser(long id) {
         jwt = getJwtFormSharedPreferences();
@@ -664,5 +666,9 @@ public class MyRoutes {
 
     public String getUsername() {
         return username;
+    }
+
+    public User getUser2(){
+       return this.user;
     }
 }
