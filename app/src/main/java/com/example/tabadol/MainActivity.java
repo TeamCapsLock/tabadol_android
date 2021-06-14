@@ -4,14 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.util.Log;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.tabadol.api.MyRoutes;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
+import com.example.tabadol.api.Post;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,13 +31,33 @@ public class MainActivity extends AppCompatActivity {
     // TODO: change this to posts url
     public static final String URL ="https://tabadol1.herokuapp.com/jposts";
     private static final String ALL_USERS = "https://tabadol1.herokuapp.com/jallUsers";
+    private ArrayList<Post> posts = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toast.makeText(this, UserSession.sessionId, Toast.LENGTH_SHORT).show();
-        PostAsyncTask postAsyncTask = new PostAsyncTask();
-        postAsyncTask.execute();
+
+//        PostAsyncTask postAsyncTask = new PostAsyncTask();
+//
+//        postAsyncTask.execute();
+        MyRoutes myRoutes = new MyRoutes(this);
+//        displayPosts(posts);
+        posts = myRoutes.getPosts();
+        while (posts == null){
+            SystemClock.sleep(5000);
+            Log.v("##########","inside while");
+            posts = myRoutes.getPost2();
+        }
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+                displayPosts();
+//                for(Post post: posts){
+//                    Log.v("%%%", post.getBody());
+//                }
+//            }
+//        },10000);
 
 
     }//end onCreate()
@@ -63,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
             if(posts == null)
                 return;
 
-            displayPosts(posts);
+//            displayPosts(posts);
 
         }
         // create valid url to use later in HTTPRequest
@@ -140,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
                 weight = jsonPosts.getJSONObject(i).getInt("weight");
                 available = jsonPosts.getJSONObject(i).getBoolean("available");
                 createdAt = jsonPosts.getJSONObject(i).getString("createdAt");
-                posts.add(new Post(body, category, type, weight, available, createdAt));
+//                posts.add(new Post(,body, category, type, weight, available, createdAt));
             }
 
             return posts;
@@ -149,9 +173,19 @@ public class MainActivity extends AppCompatActivity {
 
     } //end PostAsyncTask
 
-    public void displayPosts(ArrayList<Post> posts){
+    public void displayPosts(){
+        if(posts == null){
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    displayPosts();
+
+                }
+            },2000);
+            return;
+        }
         for(Post post: posts){
-            Log.v("post", post.toString());
+            Log.v("##########", post.getBody());
         }
         PostAdapter postAdapter = new PostAdapter(this, posts);
         ListView listView = findViewById(R.id.listView);

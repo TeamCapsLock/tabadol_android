@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +25,7 @@ public class MyRoutes {
     Context context;
     String username;
     String password;
+    ArrayList<Post> posts;
    public MyRoutes(Context context){
        this.retrofit = MyRetrofit.getInstance();
        this.tabadolAPI = retrofit.getApi();
@@ -77,8 +79,7 @@ public class MyRoutes {
     }
 
 
-    public void getPosts(){
-
+    public ArrayList<Post> getPosts(){
         headers = new HashMap<>();
         jwt = getJwtFormSharedPreferences();
 
@@ -88,13 +89,13 @@ public class MyRoutes {
 
 
         call.enqueue(new Callback<List<Post>>() {
+
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
 
                 Log.v("HTTP_Request: ","code: "+response.code());
-                Post post = response.body().get(0);
-
-                Log.v("HTTP_Request: ","first Post: "+post.toString());
+                posts = (ArrayList<Post>) response.body();
+                Log.v("HTTP_Request: ","all Post: "+posts.toString());
 
             }
 
@@ -111,7 +112,7 @@ public class MyRoutes {
                 return;
             }
         });
-
+        return posts;
     }
 
     public  void getLoggedInUser(){
@@ -232,6 +233,10 @@ public class MyRoutes {
         SharedPreferences sh = context.getSharedPreferences("MySharedPref", context.MODE_PRIVATE);
         password = sh.getString("password",null);
         return password;
+    }
+
+    public ArrayList<Post> getPost2(){
+       return posts;
     }
 
 
