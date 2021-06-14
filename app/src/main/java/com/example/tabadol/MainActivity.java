@@ -16,6 +16,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import com.example.tabadol.api.Post;
+import com.example.tabadol.fragments.PostFragment;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -35,29 +37,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toast.makeText(this, UserSession.sessionId, Toast.LENGTH_SHORT).show();
-
-//        PostAsyncTask postAsyncTask = new PostAsyncTask();
-//
-//        postAsyncTask.execute();
-        MyRoutes myRoutes = new MyRoutes(this);
-//        displayPosts(posts);
-        posts = myRoutes.getPosts();
-        while (posts == null){
-            SystemClock.sleep(5000);
-            Log.v("##########","inside while");
-            posts = myRoutes.getPost2();
-        }
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-                displayPosts();
-//                for(Post post: posts){
-//                    Log.v("%%%", post.getBody());
-//                }
-//            }
-//        },10000);
+        setContentView(R.layout.activity_category);
 
 
     }//end onCreate()
