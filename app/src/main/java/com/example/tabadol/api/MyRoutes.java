@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,19 +18,30 @@ import retrofit2.Response;
 
 public class MyRoutes {
 
-    String jwt = null;
-    Map<String, String> headers;
-    TabadolAPI tabadolAPI;
-    MyRetrofit retrofit;
-    Context context;
-    String username;
-    String password;
-   public MyRoutes(Context context){
+    private String jwt = null;
+    private Map<String, String> headers;
+    private TabadolAPI tabadolAPI;
+    private MyRetrofit retrofit;
+    private Context context;
+    private String username;
+    private String password;
+    private ArrayList<Post> posts = null;
+
+    private static MyRoutes myRoutesInstanse = null;
+
+   private MyRoutes(Context context){
        this.retrofit = MyRetrofit.getInstance();
        this.tabadolAPI = retrofit.getApi();
        this.context = context;
        username = getUsernameFormSharedPreferences();
        password = getPasswordFormSharedPreferences();
+   }
+
+   public static MyRoutes getMyRoutesInstanse(Context context){
+       if (myRoutesInstanse == null)
+           myRoutesInstanse = new MyRoutes(context);
+
+       return myRoutesInstanse;
    }
 
 
@@ -64,7 +76,6 @@ public class MyRoutes {
                 // otherwise, it will throw an error
                 myEdit.commit();
 
-
             }
 
             @Override
@@ -78,7 +89,6 @@ public class MyRoutes {
 
 
     public void getPosts(){
-
         headers = new HashMap<>();
         jwt = getJwtFormSharedPreferences();
 
@@ -88,13 +98,13 @@ public class MyRoutes {
 
 
         call.enqueue(new Callback<List<Post>>() {
+
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
 
                 Log.v("HTTP_Request: ","code: "+response.code());
-                Post post = response.body().get(0);
-
-                Log.v("HTTP_Request: ","first Post: "+post.toString());
+                MyRoutes.this.posts = (ArrayList<Post>) response.body();
+                Log.v("HTTP_Request: ","all Post: "+posts.toString());
 
             }
 
@@ -111,7 +121,6 @@ public class MyRoutes {
                 return;
             }
         });
-
     }
 
     public  void getLoggedInUser(){
@@ -235,6 +244,10 @@ public class MyRoutes {
         SharedPreferences sh = context.getSharedPreferences("MySharedPref", context.MODE_PRIVATE);
         password = sh.getString("password",null);
         return password;
+    }
+
+    public ArrayList<Post> getPost2(){
+       return this.posts;
     }
 
 

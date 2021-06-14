@@ -31,12 +31,8 @@ public interface TabadolAPI {
     Call<AuthenticationResponse> getJWT_token(@Body AuthenticationRequest authenticationRequest);
 
 
-
-
     @GET("jprofile/{id}")
     Call<User> getUser(@HeaderMap Map<String,String> headers, @Path("id") long id);
-
-
 
 
     @POST("testpostjson")
