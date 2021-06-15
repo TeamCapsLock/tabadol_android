@@ -11,7 +11,7 @@
         android:layout_width="83dp"
         android:layout_height="71dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username_user_profile_act"
@@ -21,18 +21,19 @@
         android:id="@+id/username_user_profile_act"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="TextView"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
+        android:id="@+id/ratingTitle_user_profile_act"
+        android:layout_width="65dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:text="Rating"
         android:visibility="invisible"
@@ -40,59 +41,62 @@
         app:layout_constraintTop_toBottomOf="@+id/username_user_profile_act" />
 
     <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
+        android:id="@+id/following_title_user_profile_act"
+        android:layout_width="65dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:text="Following"
         android:visibility="invisible"
-        app:layout_constraintStart_toEndOf="@+id/textView13"
+        app:layout_constraintStart_toEndOf="@+id/ratingTitle_user_profile_act"
         app:layout_constraintTop_toBottomOf="@+id/username_user_profile_act" />
 
     <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
+        android:id="@+id/followers_title_user_profile_act"
+        android:layout_width="65dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:text="Followers"
         android:visibility="invisible"
-        app:layout_constraintStart_toEndOf="@+id/textView14"
+        app:layout_constraintStart_toEndOf="@+id/following_title_user_profile_act"
         app:layout_constraintTop_toBottomOf="@+id/username_user_profile_act" />
 
     <TextView
         android:id="@+id/rating_user_profile_act"
-        android:layout_width="wrap_content"
+        android:layout_width="65dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
+        android:textAlignment="center"
         android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/image_user_profile_act"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintTop_toBottomOf="@+id/ratingTitle_user_profile_act" />
 
     <TextView
         android:id="@+id/following_user_profile_act"
-        android:layout_width="wrap_content"
+        android:layout_width="65dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
+        android:textAlignment="center"
         android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/rating_user_profile_act"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        app:layout_constraintTop_toBottomOf="@+id/following_title_user_profile_act" />
 
     <TextView
         android:id="@+id/followers_user_profile_act"
-        android:layout_width="wrap_content"
+        android:layout_width="65dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
+        android:textAlignment="center"
         android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/following_user_profile_act"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        app:layout_constraintTop_toBottomOf="@+id/followers_title_user_profile_act" />
 
     <TextView
         android:id="@+id/fullname_user_profile_act"

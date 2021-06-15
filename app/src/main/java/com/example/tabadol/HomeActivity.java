@@ -19,5 +19,7 @@ public class HomeActivity extends AppCompatActivity {
         viewPager.setAdapter(new HomeFragmentPagerAdapter(getSupportFragmentManager(), this));
         TabLayout tabLayout = findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);
+
+
     }
 }

@@ -2,6 +2,7 @@ package com.example.tabadol;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ListView;
@@ -28,8 +29,12 @@ public class FollowersList extends AppCompatActivity {
         listView = findViewById(R.id.followers_list_listView);
         myRoutes = MyRoutes.getMyRoutesInstanse(this);
 
+        Intent userProfileIntent = getIntent();
+        String username = userProfileIntent.getStringExtra("username");
+        if( username == null || username.length() ==0)
+            username = myRoutes.getUsername();
 
-        myRoutes.getFollowersList(myRoutes.getUsername());
+        myRoutes.getFollowersList(username);
 
         displayFollowersDetails();
 

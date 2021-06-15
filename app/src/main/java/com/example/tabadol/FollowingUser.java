@@ -2,6 +2,7 @@ package com.example.tabadol;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -29,7 +30,13 @@ public class FollowingUser extends AppCompatActivity {
 
         listView = findViewById(R.id.following_list_ListView);
         myRoutes = MyRoutes.getMyRoutesInstanse(this);
-        myRoutes.getFollowingList(myRoutes.getUsername());
+
+        Intent userProfileIntent = getIntent();
+        String username = userProfileIntent.getStringExtra("username");
+        if( username == null || username.length() ==0)
+            username = myRoutes.getUsername();
+
+        myRoutes.getFollowingList(username);
 
         displayFollowingUserDetails();
 

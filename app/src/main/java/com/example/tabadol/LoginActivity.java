@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         // set the activity tile
         setTitle(R.string.login);
-        
+
 //
 //        if(UserSession.sessionId != null){
 //            intent = new Intent(this, MainActivity.class);

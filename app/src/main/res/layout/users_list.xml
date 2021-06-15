@@ -11,38 +11,24 @@
         android:layout_width="216dp"
         android:layout_height="29dp"
         android:layout_marginStart="@dimen/padding"
-        android:layout_marginTop="@dimen/padding"
         android:layout_marginBottom="@dimen/padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/circle_background_user_image_posts_page"
-        app:layout_constraintTop_toBottomOf="@+id/text_post_category"
+        app:layout_constraintTop_toBottomOf="@+id/user_name_user_list"
         tools:text="@string/post_body" />
-
-    <TextView
-        android:id="@+id/text_post_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/padding"
-        android:layout_marginEnd="@dimen/padding"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/rating_user_list"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/education" />
 
     <TextView
         android:id="@+id/user_name_user_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/padding"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="12dp"
         app:layout_constraintStart_toEndOf="@+id/circle_background_user_image_posts_page"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.101"
         tools:text="@string/firstname" />
 
     <ImageView
-        android:id="@+id/user_image_posts_page"
+        android:id="@+id/user_image_users_list"
         android:layout_width="@dimen/image_width_post"
         android:layout_height="@dimen/image_height_post"
         android:layout_marginStart="@dimen/padding"
