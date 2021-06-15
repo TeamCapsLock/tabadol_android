@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/sent_image"
+        android:layout_width="@dimen/image_width_and_height"
+        android:layout_height="@dimen/image_width_and_height"
+        android:layout_marginStart="@dimen/padding"
+        android:layout_marginTop="@dimen/padding"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/male_icon" />
+
+    <TextView
+        android:id="@+id/sent_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/username"
+        app:layout_constraintStart_toEndOf="@+id/sent_image"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/sent_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="36dp"
+        android:text="@string/category"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/custom_blue"/>
+
+    <TextView
+        android:id="@+id/sent_body"
+        android:layout_width="348dp"
+        android:layout_height="103dp"
+        android:layout_marginTop="68dp"
+        android:text="@string/lorem"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sent_username" />
+
+    <ImageView
+        android:id="@+id/sent_image2"
+        android:layout_width="@dimen/image_width_and_height"
+        android:layout_height="@dimen/image_width_and_height"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sent_body"
+        app:srcCompat="@drawable/female_icon" />
+
+    <TextView
+        android:id="@+id/sent_username2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text="@string/username"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toEndOf="@+id/sent_image2"
+        app:layout_constraintTop_toBottomOf="@+id/sent_body" />
+
+    <TextView
+        android:id="@+id/sent_body2"
+        android:layout_width="268dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/lorem"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.591"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sent_image2" />
+
+    <Button
+        android:id="@+id/received_accept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/accept"
+        app:layout_constraintEnd_toStartOf="@+id/received_reject"
+        app:layout_constraintHorizontal_bias="0.643"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sent_body2" />
+
+    <Button
+        android:id="@+id/received_reject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="68dp"
+        android:background="@drawable/button_red"
+        android:text="@string/reject"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sent_body2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
