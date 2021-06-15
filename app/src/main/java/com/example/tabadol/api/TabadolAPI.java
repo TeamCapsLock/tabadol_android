@@ -83,4 +83,16 @@ public interface TabadolAPI {
     Call<User> EditProfile(@HeaderMap Map<String,String> headers, @Body EditProfileForm editProfile);
 
 
+    //
+    @POST("jaddPost")
+    Call<ResponseJson> addPost(@HeaderMap Map<String,String> headers, @Body AddPostForm addPostForm);
+
+    @POST("jacceptoffer")
+    Call<ResponseJson> acceptOffer(@HeaderMap Map<String,String> headers, @Body AcceptOffer acceptOffer);
+
+    @POST("jdeclineoffer")
+    Call<ResponseJson> declinedOffer(@HeaderMap Map<String,String> headers, @Body AcceptOffer acceptOffer);
+
+    @POST("jexchange/{id}")
+    Call<ResponseJson> exchangeOffer(@HeaderMap Map<String,String> headers,@Path("id") long id, @Body  ExchangeOffer exchange);
 }

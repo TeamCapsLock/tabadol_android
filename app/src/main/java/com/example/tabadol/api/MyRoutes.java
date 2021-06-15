@@ -119,7 +119,7 @@ public class MyRoutes {
                     public void run() {
                         context.startActivity(homeIntent);
                     }
-                }, 1500);
+                }, 3000);
 
 
             }
@@ -468,7 +468,47 @@ public class MyRoutes {
 
     }
 
+<<<<<<< HEAD
     public void signup(SignupForm formFields){
+=======
+    public void exchangeOffer(long id, long myPostId){
+        headers = new HashMap<>();
+        jwt = getJwtFormSharedPreferences();
+        headers.put("Authorization", "Bearer "+jwt);
+
+        Call<ResponseJson> call = tabadolAPI.exchangeOffer(headers, id, new ExchangeOffer(myPostId));
+        call.enqueue(new Callback<ResponseJson>() {
+            @Override
+            public void onResponse(Call<ResponseJson> call, Response<ResponseJson> response) {
+                Log.v("HTTP_Request: ","code: "+response.code());
+                ResponseJson resJson = response.body();
+                Log.v("HTTP_Request: ","response : "+resJson.getMessage());
+            }
+
+            @Override
+            public void onFailure(Call<ResponseJson> call, Throwable t) {
+                Log.e("HTTP_Request: ","Request failed.. something wrong in your request !  \n"+t.getMessage());
+
+                getJWT_token(MyRoutes.this.username, MyRoutes.this.password);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        exchangeOffer(id,myPostId);
+                    }
+                }, 500);
+                return;
+
+
+            }
+        });
+
+
+
+    }
+
+    public void signup(String username, String email, String firstname, String lastname, String password, String confirm, String skills, String bio, String phone, String image){
+>>>>>>> main
 
 //
 //        headers = new HashMap<>();
@@ -553,6 +593,109 @@ public class MyRoutes {
 
 
     }
+
+
+    public void addPost( String body, String category, String type, Integer weight){
+        headers = new HashMap<>();
+        jwt = getJwtFormSharedPreferences();
+        headers.put("Authorization", "Bearer "+jwt);
+
+        Call<ResponseJson> call = tabadolAPI.addPost(headers, new AddPostForm(body,category,type,weight));
+        call.enqueue(new Callback<ResponseJson>() {
+            @Override
+            public void onResponse(Call<ResponseJson> call, Response<ResponseJson> response) {
+                Log.v("HTTP_Request: ", "code: " + response.code());
+                Log.v("HTTP_Request: ", "response : " + response.body().toString());
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseJson> call, Throwable t) {
+                Log.e("HTTP_Request: ","Request failed.. something wrong in your request !  \n"+t.getMessage());
+                getJWT_token(MyRoutes.this.username,password);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                       addPost(body,category,type,weight);
+                    }
+                }, 500);
+                return;
+
+            }
+        });
+
+
+    }
+
+
+
+    public void acceptOffer(long source_id, long destination_id){
+        headers = new HashMap<>();
+        jwt = getJwtFormSharedPreferences();
+        headers.put("Authorization", "Bearer "+jwt);
+
+        Call<ResponseJson> call = tabadolAPI.acceptOffer(headers, new AcceptOffer(source_id,destination_id));
+        call.enqueue(new Callback<ResponseJson>() {
+            @Override
+            public void onResponse(Call<ResponseJson> call, Response<ResponseJson> response) {
+                Log.v("HTTP_Request: ", "code: " + response.code());
+
+                Log.v("HTTP_Request: ", "response : " + response.body().toString());
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseJson> call, Throwable t) {
+                Log.e("HTTP_Request: ","Request failed.. something wrong in your request !  \n"+t.getMessage());
+                getJWT_token(MyRoutes.this.username,password);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                       acceptOffer(source_id,destination_id);
+                    }
+                }, 500);
+                return;
+
+
+            }
+        });
+
+
+    }
+
+    public void declinedOffer(long source_id, long destination_id){
+        headers = new HashMap<>();
+        jwt = getJwtFormSharedPreferences();
+        headers.put("Authorization", "Bearer "+jwt);
+
+        Call<ResponseJson> call = tabadolAPI.declinedOffer(headers, new AcceptOffer(source_id,destination_id));
+        call.enqueue(new Callback<ResponseJson>() {
+            @Override
+            public void onResponse(Call<ResponseJson> call, Response<ResponseJson> response) {
+                Log.v("HTTP_Request: ", "code: " + response.code());
+                Log.v("HTTP_Request: ", "response : " + response.body().toString());
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseJson> call, Throwable t) {
+                Log.e("HTTP_Request: ","Request failed.. something wrong in your request !  \n"+t.getMessage());
+                getJWT_token(MyRoutes.this.username,password);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        declinedOffer(source_id,destination_id);
+                    }
+                }, 500);
+                return;
+
+
+            }
+        });
+
+
+    }
+
 
     public void FollowUser(String username){
 
