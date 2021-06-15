@@ -2,8 +2,8 @@
 <resources>
     <dimen name="edit_text_width">350dp</dimen>
     <dimen name="edit_text_width_two">150dp</dimen>
-    <dimen name="image_height_post">60dp</dimen>
-    <dimen name="image_width_post">60dp</dimen>
+    <dimen name="image_height_post">75dp</dimen>
+    <dimen name="image_width_post">75dp</dimen>
 
 
     <dimen name="list_view_item_height">88dp</dimen>

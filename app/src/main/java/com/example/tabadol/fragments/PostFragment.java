@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.tabadol.PostAdapter;
 import com.example.tabadol.R;
+import com.example.tabadol.api.MyRoutes;
 import com.example.tabadol.api.Post;
 import com.example.tabadol.api.User;
 
@@ -28,16 +29,22 @@ public class PostFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        }
 
+    }
+
+    ArrayList<Post> posts = null;
+    MyRoutes myRoutes ;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.activity_list_view, container, false);
-        ArrayList<Post> posts = new ArrayList<>();
-        for(int i=0; i<15; i++)
-            posts.add(new Post(1,"body", "category", "type", 6, true, "createdAt", "offer type", new User()));
+
+        posts = new ArrayList<>();
+        myRoutes = MyRoutes.getMyRoutesInstanse(getActivity());
+        posts = myRoutes.getPost2();
+//        for(int i=0; i<15; i++)
+//            posts.add(new Post(1,"body", "category", "type", 6, true, "createdAt", "offer type", new User()));
         PostAdapter postAdapter = new PostAdapter(getActivity(), posts);
         ListView listView = rootView.findViewById(R.id.listView);
         listView.setAdapter(postAdapter);

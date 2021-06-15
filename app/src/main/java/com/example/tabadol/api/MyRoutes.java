@@ -1,11 +1,14 @@
 package com.example.tabadol.api;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 
 import android.os.Handler;
 import android.util.Log;
 import android.widget.TextView;
+
+import com.example.tabadol.HomeActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,9 +42,15 @@ public class MyRoutes {
        this.context = context;
        username = getUsernameFormSharedPreferences();
        password = getPasswordFormSharedPreferences();
+       getPosts();
+       getAllUsers();
    }
 
-   public static MyRoutes getMyRoutesInstanse(Context context){
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public static MyRoutes getMyRoutesInstanse(Context context){
        if (myRoutesInstanse == null)
            myRoutesInstanse = new MyRoutes(context);
 
@@ -59,6 +68,8 @@ public class MyRoutes {
                 Log.v("HTTP_Request: ","JWT token: "+response.body().getJwt());
                 jwt = response.body().getJwt();
 
+
+                Intent homeIntent = new Intent(context, HomeActivity.class);
 
                 // Storing data into SharedPreferences
                 SharedPreferences sharedPreferences = context.getSharedPreferences("MySharedPref",Context.MODE_PRIVATE);
@@ -79,6 +90,7 @@ public class MyRoutes {
                 // we need to commit to apply those changes made,
                 // otherwise, it will throw an error
                 myEdit.commit();
+                context.startActivity(homeIntent);
 
             }
 
@@ -109,6 +121,29 @@ public class MyRoutes {
                 Log.v("HTTP_Request: ","code: "+response.code());
                 MyRoutes.this.posts = (ArrayList<Post>) response.body();
                 Log.v("HTTP_Request: ","all Post: "+posts.toString());
+
+
+
+                // test
+
+                SharedPreferences sharedPreferences = context.getSharedPreferences("MySharedPref",Context.MODE_PRIVATE);
+
+                // Creating an Editor object to edit(write to the file)
+                SharedPreferences.Editor myEdit = sharedPreferences.edit();
+
+                // Storing the key and its value as the data fetched from edittext
+                myEdit.putString("jwt", jwt);
+                myEdit.putString("username", username);
+                myEdit.putString("password", password);
+                MyRoutes.this.username = username;
+                MyRoutes.this.password = password;
+
+
+
+                // Once the changes have been made,
+                // we need to commit to apply those changes made,
+                // otherwise, it will throw an error
+                myEdit.commit();
 
             }
 
@@ -176,6 +211,7 @@ public class MyRoutes {
 
 
                 Log.v("HTTP_Request: ", "response : " + response.body().toString());
+                MyRoutes.this.user = response.body();
 
             }
 

@@ -40,9 +40,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
-        setContentView(R.layout.activity_main);
+//        setContentView(R.layout.activity_main);
 
         MyRoutes myRoutes = MyRoutes.getMyRoutesInstanse(this);
+        myRoutes.getJWT_token("mhd.sad","1234");
 //        myRoutes.getJWT_token("ramayaser66", "1234");
 //        myRoutes.getJWT_token("mhd.sad", "1234");
 //        myRoutes.getJWT_token("A", "1234");
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
 //        myRoutes.UnfollowUser("A");
 //            myRoutes.FollowUser("A");
 //            myRoutes.RateUser("mhd.sad", 4);
+
 
 
     }//end onCreate()

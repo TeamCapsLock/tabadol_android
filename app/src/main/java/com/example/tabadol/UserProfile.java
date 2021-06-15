@@ -2,6 +2,7 @@ package com.example.tabadol;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,7 +11,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+//import com.bumptech.glide.Glide;
+//import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.tabadol.api.MyRoutes;
 import com.example.tabadol.api.Post;
 import com.example.tabadol.api.User;
@@ -21,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserProfile extends AppCompatActivity {
-    TextView usernameTv, ratingTv, followingTv, followersTv, nameTv, bioTv, skillsTv, emailTv, phoneTv;
+    TextView usernameTv, ratingTv, followingTv, followersTv, nameTv, bioTv, skillsTv, emailTv, phoneTv, ratingTitleTv, followingTitleTv,followersTitleTv;
     ImageView image;
     ListView listView ;
 
@@ -31,7 +37,7 @@ public class UserProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
-
+        setTitle(R.string.user_profile);
 
         usernameTv = findViewById(R.id.username_user_profile_act);
         ratingTv = findViewById(R.id.rating_user_profile_act);
@@ -44,14 +50,30 @@ public class UserProfile extends AppCompatActivity {
         phoneTv = findViewById(R.id.phone_user_profile_act);
         image = findViewById(R.id.image_user_profile_act);
         listView = findViewById(R.id.list_view_posts_of_user_User_profile_act);
-
+        ratingTitleTv = findViewById(R.id.ratingTitle_user_profile_act);
+        followingTitleTv = findViewById(R.id.following_title_user_profile_act);
+        followersTitleTv = findViewById(R.id.followers_title_user_profile_act);
 
         myRoutes = MyRoutes.getMyRoutesInstanse(this);
-        myRoutes.getLoggedInUser();
+        myRoutes.setUser(null);
+
+        Intent userIntent = getIntent();
+        long id = userIntent.getLongExtra("id",0);
+        Toast.makeText(this, id+"", Toast.LENGTH_SHORT).show();
+        if(id == 0)
+            myRoutes.getLoggedInUser();
+
+        else
+            myRoutes.getUser(id);
+
+
         displayUserDetails();
 
+       setGoToFollowingListener(followingTv);
+       setGoToFollowingListener(followingTitleTv);
 
-
+       setGoToFollowersListener(followersTv);
+       setGoToFollowersListener(followersTitleTv);
     }
 
     private  void  displayUserDetails() {
@@ -92,6 +114,9 @@ public class UserProfile extends AppCompatActivity {
         phoneTv.setVisibility(View.VISIBLE);
         image.setVisibility(View.VISIBLE);
         listView.setVisibility(View.VISIBLE);
+        followersTitleTv.setVisibility(View.VISIBLE);
+        followingTitleTv.setVisibility(View.VISIBLE);
+        ratingTitleTv.setVisibility(View.VISIBLE);
 
         List<Post> posts = loggedInUser.getPosts();
 
@@ -100,9 +125,41 @@ public class UserProfile extends AppCompatActivity {
         listView.setAdapter(post_user_profile_adapter);
 
 
+        RequestOptions requestOptions=new RequestOptions();
+        requestOptions.placeholder(R.drawable.male_icon);
+        requestOptions.error(R.drawable.male_icon);
+
+        Glide.with(UserProfile.this)
+                .load(loggedInUser.getImage())
+                .apply(requestOptions)
+                .circleCrop()
+                .into(image);
+
+
+    }
+    public void setGoToFollowingListener(View view){
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent followingListIntent = new Intent(UserProfile.this, FollowingUser.class);
+                String name = usernameTv.getText().toString();
+                followingListIntent.putExtra("username",name);
+                startActivity(followingListIntent);
+            }
+        });
     }
 
-
+    public void setGoToFollowersListener(View view){
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent followersListIntent = new Intent(UserProfile.this, FollowersList.class);
+                String name = usernameTv.getText().toString();
+                followersListIntent.putExtra("username",name);
+                startActivity(followersListIntent);
+            }
+        });
+    }
 
 
 
