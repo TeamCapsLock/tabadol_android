@@ -22,6 +22,9 @@ public class SplashActivity extends AppCompatActivity {
 
 
         myRoutes = MyRoutes.getMyRoutesInstanse(this);
+        myRoutes.logout();
+
+
 
         String currentUsername = myRoutes.getUsernameFormSharedPreferences();
         String currentPassword = myRoutes.getPasswordFormSharedPreferences();
@@ -34,7 +37,8 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 Intent intent;
                 if( currentPassword != null && currentUsername != null) {
-                    intent = new Intent(SplashActivity.this, HomeActivity.class);
+//                    intent = new Intent(SplashActivity.this, HomeActivity.class);
+                    intent = new Intent(SplashActivity.this, MainActivity.class);
                 }
                 else{
                      intent = new Intent(SplashActivity.this, LoginActivity.class);
