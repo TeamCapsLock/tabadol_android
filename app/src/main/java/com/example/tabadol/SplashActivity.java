@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> 917b144301735216e1732c179dce02f19cf5bcf5
 package com.example.tabadol;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,11 +10,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
-<<<<<<< HEAD
-import com.example.tabadol.PostDetails;
-=======
+
 import com.example.tabadol.api.MyRoutes;
->>>>>>> 917b144301735216e1732c179dce02f19cf5bcf5
+
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -39,9 +34,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-<<<<<<< HEAD
-                Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
-=======
+
                 Intent intent;
                 if( currentPassword != null && currentUsername != null) {
                     intent = new Intent(SplashActivity.this, HomeActivity.class);
@@ -49,7 +42,6 @@ public class SplashActivity extends AppCompatActivity {
                 else{
                      intent = new Intent(SplashActivity.this, LoginActivity.class);
                 }
->>>>>>> 917b144301735216e1732c179dce02f19cf5bcf5
                 startActivity(intent);
                 finish();
 

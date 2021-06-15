@@ -78,7 +78,7 @@
         <item>Marketing</item>
         <item>Electronics</item>
     </string-array>
-<<<<<<< HEAD
+
     <string name="title_activity_main2">MainActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -90,8 +90,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
-=======
->>>>>>> 917b144301735216e1732c179dce02f19cf5bcf5
+
 
 
 </resources>
