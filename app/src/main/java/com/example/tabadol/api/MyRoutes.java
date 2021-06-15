@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 
 import android.os.Handler;
 import android.util.Log;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tabadol.HomeActivity;
@@ -35,6 +34,7 @@ public class MyRoutes {
     private ArrayList<User> allUsers = null;
     private ArrayList<User> followingList = null;
     private ArrayList<User> followersList = null;
+    private List<Long> ratedUsersids= null;
 
     private static MyRoutes myRoutesInstanse = null;
 
@@ -48,6 +48,7 @@ public class MyRoutes {
        if(jwt != null){
             getPosts();
             getAllUsers();
+            getRatedUsers();
        }
 
 
@@ -182,8 +183,6 @@ public class MyRoutes {
             }
         });
     }
-
-
     public  void getLoggedInUser(){
         jwt = getJwtFormSharedPreferences();
         headers = new HashMap<>();
@@ -215,7 +214,6 @@ public class MyRoutes {
         });
 
     }
-
     public void getUser(long id) {
         jwt = getJwtFormSharedPreferences();
         headers = new HashMap<>();
@@ -366,6 +364,44 @@ public class MyRoutes {
         });
 
     }
+//     public void signup(String username, String email, String firstname, String lastname, String password, String confirm, String skills, String bio, String phone, String image){
+
+// //
+// //        headers = new HashMap<>();
+// //        jwt = getJwtFormSharedPreferences();
+// //
+// //        headers.put("Authorization", "Bearer "+jwt);
+
+
+
+//         Call<ResponseJson> call = tabadolAPI.signup(new SignupForm(username,email,firstname,lastname, password,confirm,skills,bio,phone,image));
+
+//         call.enqueue(new Callback<ResponseJson>() {
+//             @Override
+//             public void onResponse(Call<ResponseJson> call, Response<ResponseJson> response) {
+//                 Log.v("HTTP_Request: ","code: "+response.code());
+//                 ResponseJson resJson = response.body();
+//                 Log.v("HTTP_Request: ","response : "+resJson.getMessage());
+//             }
+
+//             @Override
+//             public void onFailure(Call<ResponseJson> call, Throwable t) {
+
+//                 Log.e("HTTP_Request: ","Request failed.. something wrong in your request !  \n"+t.getMessage());
+
+//                 new Handler().postDelayed(new Runnable() {
+//                     @Override
+//                     public void run() {
+//                         signup(username,email,firstname,lastname, password,confirm,skills,bio,phone,image);
+//                     }
+//                 }, 500);
+//                 return;
+
+//             }
+//         });
+//     }
+
+
     public void  getReceivedOffers(){
 
         headers = new HashMap<>();
@@ -431,7 +467,6 @@ public class MyRoutes {
         });
 
     }
-
     public void getFinishedOffers(){
         headers = new HashMap<>();
         jwt = getJwtFormSharedPreferences();
@@ -463,14 +498,8 @@ public class MyRoutes {
             }
         });
 
-
-
-
     }
 
-<<<<<<< HEAD
-    public void signup(SignupForm formFields){
-=======
     public void exchangeOffer(long id, long myPostId){
         headers = new HashMap<>();
         jwt = getJwtFormSharedPreferences();
@@ -507,8 +536,7 @@ public class MyRoutes {
 
     }
 
-    public void signup(String username, String email, String firstname, String lastname, String password, String confirm, String skills, String bio, String phone, String image){
->>>>>>> main
+    public void signup(SignupForm formFields){
 
 //
 //        headers = new HashMap<>();
@@ -593,8 +621,6 @@ public class MyRoutes {
 
 
     }
-
-
     public void addPost( String body, String category, String type, Integer weight){
         headers = new HashMap<>();
         jwt = getJwtFormSharedPreferences();
@@ -626,9 +652,6 @@ public class MyRoutes {
 
 
     }
-
-
-
     public void acceptOffer(long source_id, long destination_id){
         headers = new HashMap<>();
         jwt = getJwtFormSharedPreferences();
@@ -662,7 +685,6 @@ public class MyRoutes {
 
 
     }
-
     public void declinedOffer(long source_id, long destination_id){
         headers = new HashMap<>();
         jwt = getJwtFormSharedPreferences();
@@ -695,8 +717,6 @@ public class MyRoutes {
 
 
     }
-
-
     public void FollowUser(String username){
 
         headers = new HashMap<>();
@@ -733,8 +753,6 @@ public class MyRoutes {
         });
 
     }
-
-
     public void UnfollowUser(String username){
         headers = new HashMap<>();
         jwt = getJwtFormSharedPreferences();
@@ -768,7 +786,6 @@ public class MyRoutes {
         });
 
     }
-
     public void RateUser(String username,int rateValue){
         headers = new HashMap<>();
         jwt = getJwtFormSharedPreferences();
@@ -803,6 +820,75 @@ public class MyRoutes {
         });
 
     }
+    public void deletePost(long id){
+        headers = new HashMap<>();
+        jwt = getJwtFormSharedPreferences();
+        headers.put("Authorization", "Bearer "+jwt);
+
+        Call<ResponseJson> call = tabadolAPI.deletePost(headers,id);
+
+            call.enqueue(new Callback<ResponseJson>() {
+                @Override
+                public void onResponse(Call<ResponseJson> call, Response<ResponseJson> response) {
+                    Log.v("HTTP_Request: ","code: "+response.code());
+                    ResponseJson resJson = response.body();
+                    Log.v("HTTP_Request: ","response : "+resJson.getMessage());
+
+                }
+
+                @Override
+                public void onFailure(Call<ResponseJson> call, Throwable t) {
+                    Log.e("HTTP_Request: ","Request failed.. something wrong in your request !  \n"+t.getMessage());
+
+                    getJWT_token(MyRoutes.this.username, MyRoutes.this.password);
+
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                           deletePost(id);
+                        }
+                    }, 500);
+                    return;
+
+                }
+            });
+        }
+    public void getRatedUsers(){
+            headers = new HashMap<>();
+            jwt = getJwtFormSharedPreferences();
+            headers.put("Authorization", "Bearer "+jwt);
+
+            Call<RatedUsers> call = tabadolAPI.ratedUsers(headers);
+            call.enqueue(new Callback<RatedUsers>() {
+                @Override
+                public void onResponse(Call<RatedUsers> call, Response<RatedUsers> response) {
+                    Log.v("HTTP_Request: ","code: "+response.code());
+                    Log.v("HTTP_Request: ","response : "+response.body());
+                    ratedUsersids = response.body().getRatedUsers();
+
+
+                }
+                @Override
+                public void onFailure(Call<RatedUsers> call, Throwable t) {
+                    Log.e("HTTP_Request: ","Request failed.. something wrong in your request !  \n"+t.getMessage());
+
+                    getJWT_token(MyRoutes.this.username, MyRoutes.this.password);
+
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            getRatedUsers();
+                        }
+                    }, 500);
+                    return;
+
+
+                }
+            });
+
+        }
+
+
 
 
 
@@ -884,5 +970,8 @@ public class MyRoutes {
 
     public User getUser2(){
        return this.user;
+    }
+    public List<Long> getRatedUsers2(){
+       return this.ratedUsersids;
     }
 }
