@@ -1,25 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:layout_height="@dimen/list_view_item_height">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/text_post_body"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+    <TextView
+        android:id="@+id/text_post_body"
+        android:layout_width="216dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="@dimen/padding"
+        android:layout_marginTop="@dimen/padding"
+        android:layout_marginBottom="@dimen/padding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/circle_background_user_image_posts_page"
+        app:layout_constraintTop_toBottomOf="@+id/text_post_category"
+        tools:text="@string/post_body" />
 
-        <TextView
-            android:id="@+id/text_post_category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+    <TextView
+        android:id="@+id/text_post_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding"
+        android:layout_marginEnd="@dimen/padding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_post_body"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/education" />
 
-    </LinearLayout>
+    <TextView
+        android:id="@+id/post_owner_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/circle_background_user_image_posts_page"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.101"
+        tools:text="@string/firstname" />
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/user_image_posts_page"
+        android:layout_width="@dimen/image_width_post"
+        android:layout_height="@dimen/image_height_post"
+        android:layout_marginStart="@dimen/padding"
+        android:layout_marginEnd="@dimen/padding"
+        app:layout_constraintBottom_toBottomOf="@+id/circle_background_user_image_posts_page"
+        app:layout_constraintEnd_toEndOf="@+id/circle_background_user_image_posts_page"
+        app:layout_constraintStart_toStartOf="@+id/circle_background_user_image_posts_page"
+        app:layout_constraintTop_toTopOf="@+id/circle_background_user_image_posts_page" />
+
+    <ImageView
+        android:id="@+id/circle_background_user_image_posts_page"
+        android:layout_width="@dimen/circle_width"
+        android:layout_height="@dimen/circle_width"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/circle_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
