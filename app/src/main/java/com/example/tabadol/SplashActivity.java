@@ -22,7 +22,6 @@ public class SplashActivity extends AppCompatActivity {
 
 
         myRoutes = MyRoutes.getMyRoutesInstanse(this);
-
         String currentUsername = myRoutes.getUsernameFormSharedPreferences();
         String currentPassword = myRoutes.getPasswordFormSharedPreferences();
 

@@ -6,13 +6,25 @@
     android:layout_height="wrap_content"
     tools:context=".FollowingUser">
 
+    <TextView
+        android:id="@+id/emptyFollowing_following_act"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="This user is not following anyone yet."
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/following_list_ListView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/following_list_ListView"
-        android:layout_width="342dp"
-        android:layout_height="452dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="388dp"
+        android:layout_height="529dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
