@@ -126,6 +126,8 @@ public class MyRoutes {
             }
         });
     }
+
+
     public  void getLoggedInUser(){
         jwt = getJwtFormSharedPreferences();
         headers = new HashMap<>();
@@ -157,6 +159,7 @@ public class MyRoutes {
         });
 
     }
+
     public void getUser(long id) {
         jwt = getJwtFormSharedPreferences();
         headers = new HashMap<>();
@@ -231,6 +234,7 @@ public class MyRoutes {
         });
 
     }
+
     public void getFollowingList(String username){
 
         headers = new HashMap<>();

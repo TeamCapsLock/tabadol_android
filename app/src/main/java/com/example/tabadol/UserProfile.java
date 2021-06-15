@@ -31,6 +31,8 @@ public class UserProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
+
+
         usernameTv = findViewById(R.id.username_user_profile_act);
         ratingTv = findViewById(R.id.rating_user_profile_act);
         followingTv = findViewById(R.id.following_user_profile_act);
