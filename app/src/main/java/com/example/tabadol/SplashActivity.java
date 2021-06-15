@@ -10,7 +10,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
+
 import com.example.tabadol.api.MyRoutes;
+
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -32,6 +34,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+
                 Intent intent;
                 if( currentPassword != null && currentUsername != null) {
                     intent = new Intent(SplashActivity.this, HomeActivity.class);
@@ -43,7 +46,7 @@ public class SplashActivity extends AppCompatActivity {
                 finish();
 
             }
-        }, 2000);
+        }, 4000);
     }
 
 }
