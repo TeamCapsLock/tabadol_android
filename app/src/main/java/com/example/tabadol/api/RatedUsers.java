@@ -1,7 +1,5 @@
 package com.example.tabadol.api;
 
-import android.widget.ListView;
-
 import java.util.List;
 
 public class RatedUsers {

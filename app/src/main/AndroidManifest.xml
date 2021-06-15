@@ -13,10 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tabadol"
         android:usesCleartextTraffic="true">
+        <activity android:name=".EditProfileActivity"></activity>
         <activity
             android:name=".Main2Activity"
             android:label="@string/title_activity_main2"
-            android:theme="@style/Theme.Tabadol.NoActionBar"></activity>
+            android:theme="@style/Theme.Tabadol.NoActionBar" />
         <activity android:name=".FollowersList" />
         <activity android:name=".FollowingUser" />
         <activity android:name=".OffersActivity" />

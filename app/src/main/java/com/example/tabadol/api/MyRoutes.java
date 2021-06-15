@@ -3,7 +3,6 @@ package com.example.tabadol.api;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-
 import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
@@ -15,6 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,6 +30,7 @@ public class MyRoutes {
     private String username;
     private String password;
     private User user = null;
+    private List<Long> myFollowingIds = null;
     private ArrayList<Post> posts = null;
     private ArrayList<User> allUsers = null;
     private ArrayList<User> followingList = null;
@@ -49,9 +50,8 @@ public class MyRoutes {
             getPosts();
             getAllUsers();
             getRatedUsers();
+            getFollowingList(this.username);
        }
-
-
 
    }
 
@@ -113,6 +113,8 @@ public class MyRoutes {
                         getPosts();
                         getAllUsers();
                     }
+                    if(myFollowingIds == null)
+                        getFollowingList(username);
 
 
                 new Handler().postDelayed(new Runnable() {
@@ -306,6 +308,9 @@ public class MyRoutes {
 //                Log.v("HTTP_Request: ","code: "+response.body());
 
                 MyRoutes.this.followingList = (ArrayList<User>) response.body();
+                if(MyRoutes.this.username != null && MyRoutes.this.username.equals(username)){
+                    myFollowingIds = response.body().stream().map(u -> u.getId()).collect(Collectors.toList());
+                }
                 Log.v("HTTP_Request: ","following list : "+followingList.toString());
 
             }
@@ -973,5 +978,9 @@ public class MyRoutes {
     }
     public List<Long> getRatedUsers2(){
        return this.ratedUsersids;
+    }
+
+    public List<Long> getMyFollowingIds2(){
+       return this.myFollowingIds;
     }
 }
