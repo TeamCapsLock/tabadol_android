@@ -1,8 +1,12 @@
 package com.example.tabadol.api;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.List;
 
-public class User {
+public class User implements Parcelable {
     Long id;
     String username;
     String firstname;
@@ -26,6 +30,50 @@ public class User {
 
     public User() {
     }
+
+    protected User(Parcel in) {
+        if (in.readByte() == 0) {
+            id = null;
+        } else {
+            id = in.readLong();
+        }
+        username = in.readString();
+        firstname = in.readString();
+        lastname = in.readString();
+        image = in.readString();
+        email = in.readString();
+        skills = in.readString();
+        bio = in.readString();
+        if (in.readByte() == 0) {
+            numberOfFollowers = null;
+        } else {
+            numberOfFollowers = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            numberOfFollowing = null;
+        } else {
+            numberOfFollowing = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            rating = null;
+        } else {
+            rating = in.readDouble();
+        }
+        phone = in.readString();
+        posts = in.createTypedArrayList(Post.CREATOR);
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 
     public void setId(Long id) {
         this.id = id;
@@ -183,5 +231,47 @@ public class User {
                 "\n, phone='" + phone + '\'' +
                 "\n, posts=" + posts +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        if (id == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeLong(id);
+        }
+        dest.writeString(username);
+        dest.writeString(firstname);
+        dest.writeString(lastname);
+        dest.writeString(image);
+        dest.writeString(email);
+        dest.writeString(skills);
+        dest.writeString(bio);
+        if (numberOfFollowers == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(numberOfFollowers);
+        }
+        if (numberOfFollowing == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(numberOfFollowing);
+        }
+        if (rating == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeDouble(rating);
+        }
+        dest.writeString(phone);
+        dest.writeTypedList(posts);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.tabadol.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,14 +13,17 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.tabadol.PostAdapter;
+import com.example.tabadol.PostDetails;
 import com.example.tabadol.R;
 import com.example.tabadol.api.MyRoutes;
 import com.example.tabadol.api.Post;
 import com.example.tabadol.api.User;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class PostFragment extends Fragment {
+public class PostFragment extends Fragment  {
+    private Intent intent;
 
     public PostFragment() {
         // Required empty public constructor
@@ -51,8 +55,13 @@ public class PostFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(), "Take me to post #"+position+" details", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), posts.get(position), Toast.LENGTH_SHORT).show();
+                  intent = new Intent(getActivity(), PostDetails.class);
+                  intent.putExtra("post", posts.get(position));
+                  intent.putExtra("user", posts.get(position).getUser());
+                  startActivity(intent);
             }
+
         });
         return rootView;
     }

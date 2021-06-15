@@ -118,7 +118,7 @@ public class MyRoutes {
                     public void run() {
                         context.startActivity(homeIntent);
                     }
-                }, 1500);
+                }, 3000);
 
 
             }

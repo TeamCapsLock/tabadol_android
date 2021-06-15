@@ -1,6 +1,10 @@
 package com.example.tabadol.api;
 
-public class Post {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+
+public class Post implements Parcelable {
 
     long id;
     String body;
@@ -26,6 +30,29 @@ public class Post {
 
     public Post() {
     }
+
+    protected Post(Parcel in) {
+        id = in.readLong();
+        body = in.readString();
+        category = in.readString();
+        type = in.readString();
+        weight = in.readInt();
+        available = in.readByte() != 0;
+        createdAt = in.readString();
+        offerType = in.readString();
+    }
+
+    public static final Creator<Post> CREATOR = new Creator<Post>() {
+        @Override
+        public Post createFromParcel(Parcel in) {
+            return new Post(in);
+        }
+
+        @Override
+        public Post[] newArray(int size) {
+            return new Post[size];
+        }
+    };
 
     public long getId() {
         return id;
@@ -112,5 +139,22 @@ public class Post {
                 ", offerType='" + offerType + '\'' +
                 ", user=" + user +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(id);
+        dest.writeString(body);
+        dest.writeString(category);
+        dest.writeString(type);
+        dest.writeInt(weight);
+        dest.writeByte((byte) (available ? 1 : 0));
+        dest.writeString(createdAt);
+        dest.writeString(offerType);
     }
 }
