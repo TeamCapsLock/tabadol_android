@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.tabadol.HomeActivity;
 
@@ -42,8 +43,14 @@ public class MyRoutes {
        this.context = context;
        username = getUsernameFormSharedPreferences();
        password = getPasswordFormSharedPreferences();
-       getPosts();
-       getAllUsers();
+       jwt = getJwtFormSharedPreferences();
+       if(jwt != null){
+            getPosts();
+            getAllUsers();
+       }
+
+
+
    }
 
     public void setUser(User user) {
@@ -58,39 +65,61 @@ public class MyRoutes {
    }
 
 
+    public void logout(){
+        // Storing data into SharedPreferences
+        SharedPreferences sharedPreferences = context.getSharedPreferences("MySharedPref",Context.MODE_PRIVATE);
+
+        // Creating an Editor object to edit(write to the file)
+        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+
+        // Storing the key and its value as the data fetched from edittext
+        myEdit.clear();
+
+        myEdit.commit();
+    }
+
     public  void getJWT_token(String username, String password){
         Call<AuthenticationResponse> call = tabadolAPI.getJWT_token(new AuthenticationRequest(username,password));
-
         call.enqueue(new Callback<AuthenticationResponse>() {
             @Override
             public void onResponse(Call<AuthenticationResponse> call, Response<AuthenticationResponse> response) {
                 Log.v("HTTP_Request: ","code: "+response.code());
                 Log.v("HTTP_Request: ","JWT token: "+response.body().getJwt());
-                jwt = response.body().getJwt();
 
 
-                Intent homeIntent = new Intent(context, HomeActivity.class);
-
-                // Storing data into SharedPreferences
-                SharedPreferences sharedPreferences = context.getSharedPreferences("MySharedPref",Context.MODE_PRIVATE);
-
-                // Creating an Editor object to edit(write to the file)
-                SharedPreferences.Editor myEdit = sharedPreferences.edit();
-
-                // Storing the key and its value as the data fetched from edittext
-                myEdit.putString("jwt", jwt);
-                myEdit.putString("username", username);
-                myEdit.putString("password", password);
-                MyRoutes.this.username = username;
-                MyRoutes.this.password = password;
+                    jwt = response.body().getJwt();
 
 
+                    Intent homeIntent = new Intent(context, HomeActivity.class);
 
-                // Once the changes have been made,
-                // we need to commit to apply those changes made,
-                // otherwise, it will throw an error
-                myEdit.commit();
-                context.startActivity(homeIntent);
+                    // Storing data into SharedPreferences
+                    SharedPreferences sharedPreferences = context.getSharedPreferences("MySharedPref",Context.MODE_PRIVATE);
+
+                    // Creating an Editor object to edit(write to the file)
+                    SharedPreferences.Editor myEdit = sharedPreferences.edit();
+
+                    // Storing the key and its value as the data fetched from edittext
+                    myEdit.putString("jwt", jwt);
+                    myEdit.putString("username", username);
+                    myEdit.putString("password", password);
+                    MyRoutes.this.username = username;
+                    MyRoutes.this.password = password;
+
+                    myEdit.commit();
+
+                    if(posts == null){
+                        getPosts();
+                        getAllUsers();
+                    }
+
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        context.startActivity(homeIntent);
+                    }
+                }, 1500);
+
 
             }
 
@@ -98,6 +127,19 @@ public class MyRoutes {
             public void onFailure(Call<AuthenticationResponse> call, Throwable t) {
                 Log.e("HTTP_Request: ","code: "+t.getMessage());
 
+                if(t.getMessage().equals("timeout"))
+                {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            getJWT_token(username, password);
+                        }
+                    }, 500);
+                    return;
+                }
+                else{
+                    Toast.makeText(context,"username or password is wrong!",Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -122,28 +164,6 @@ public class MyRoutes {
                 MyRoutes.this.posts = (ArrayList<Post>) response.body();
                 Log.v("HTTP_Request: ","all Post: "+posts.toString());
 
-
-
-                // test
-
-                SharedPreferences sharedPreferences = context.getSharedPreferences("MySharedPref",Context.MODE_PRIVATE);
-
-                // Creating an Editor object to edit(write to the file)
-                SharedPreferences.Editor myEdit = sharedPreferences.edit();
-
-                // Storing the key and its value as the data fetched from edittext
-                myEdit.putString("jwt", jwt);
-                myEdit.putString("username", username);
-                myEdit.putString("password", password);
-                MyRoutes.this.username = username;
-                MyRoutes.this.password = password;
-
-
-
-                // Once the changes have been made,
-                // we need to commit to apply those changes made,
-                // otherwise, it will throw an error
-                myEdit.commit();
 
             }
 
