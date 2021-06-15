@@ -12,6 +12,9 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tabadol.api.MyRoutes;
+import com.example.tabadol.api.SignupForm;
+
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,6 +27,9 @@ public class SignupActivity extends AppCompatActivity {
     private EditText email;
     private EditText password;
     private EditText confirmPassword;
+    private EditText skills;
+    private EditText bio;
+    private EditText imageUrl;
     private Button signupButton;
     private TextView loginTextView;
     private Intent intent;
@@ -50,9 +56,12 @@ public class SignupActivity extends AppCompatActivity {
         confirmPassword = findViewById(R.id.edit_text_confirm_password);
         signupButton = findViewById(R.id.button_signup);
         loginTextView = findViewById(R.id.text_login);
+        skills = findViewById(R.id.edit_text_Skills_signup);
+        bio = findViewById(R.id.edit_text_Bio_signup);
+        imageUrl = findViewById(R.id.edit_text_image_url_signup2);
 
-        // set gender to default
-        gender = getResources().getString(R.string.male).toLowerCase();
+//        // set gender to default
+//        gender = getResources().getString(R.string.male).toLowerCase();
 
         // set onClickListener to login text view to take the user to the login page
         // if he already has an account
@@ -99,9 +108,10 @@ public class SignupActivity extends AppCompatActivity {
                     valid = false;
                 }
                 if(TextUtils.isEmpty(confirmPassword.getText().toString().trim())) {
-                    confirmPassword.setError("please enter password again");
+                    confirmPassword.setError("please re-enter the password");
                     valid = false;
                 }
+
 
                 // validate the phone number
                 pattern = "^07(7|8|9)[0-9]{7}$";
@@ -141,14 +151,23 @@ public class SignupActivity extends AppCompatActivity {
 
                 // here all the enter data is correct and now you can send them to the server
                 if(valid) {
-                    Toast.makeText(SignupActivity.this, "All correct, gender is: " + gender, Toast.LENGTH_LONG).show();
+
                     String firstname_ = firstname.getText().toString().trim();
                     String lastname_ = lastname.getText().toString().trim();
                     String username_ = username.getText().toString().trim();
                     String phone_ = phone.getText().toString().trim();
                     String email_ = email.getText().toString().trim();
                     String password_ = password.getText().toString().trim();
+                    String bio_ = bio.getText().toString().trim();
+                    String confirmPassword_ = confirmPassword.getText().toString().trim();
+                    String skills_ = skills.getText().toString().trim();
+                    String imageUrl_ = imageUrl.getText().toString().trim();
                     // gender already stored in gender variable
+
+                    SignupForm formFields = new SignupForm(username_,email_,firstname_,lastname_,password_,confirmPassword_,skills_,bio_,phone_,imageUrl_);
+
+                    MyRoutes myRoutes = MyRoutes.getMyRoutesInstanse(SignupActivity.this);
+                    myRoutes.signup(formFields);
 
 
                 }
@@ -163,25 +182,25 @@ public class SignupActivity extends AppCompatActivity {
         return matcher.matches();
     }
 
-    public void getGender(View view){
-        boolean isChecked = ((RadioButton)view).isChecked();
-        if(view.getId() == R.id.radio_button_male) {
-            gender = getResources().getString(R.string.male).toLowerCase();
-            Toast.makeText(SignupActivity.this, "gender: " + gender, Toast.LENGTH_LONG).show();
-        }
-        else if(view.getId() == R.id.radio_button_female) {
-            gender = getResources().getString(R.string.female).toLowerCase();
-            Toast.makeText(SignupActivity.this, "gender: " + gender, Toast.LENGTH_LONG).show();
-
-        }
-        // TODO: make sure to have one button checked and remove this line
-        else {
-            gender = null;
-            Toast.makeText(SignupActivity.this, "gender: " + gender, Toast.LENGTH_LONG).show();
-        }
-
-
-    }
+//    public void getGender(View view){
+//        boolean isChecked = ((RadioButton)view).isChecked();
+//        if(view.getId() == R.id.radio_button_male) {
+//            gender = getResources().getString(R.string.male).toLowerCase();
+//            Toast.makeText(SignupActivity.this, "gender: " + gender, Toast.LENGTH_LONG).show();
+//        }
+//        else if(view.getId() == R.id.radio_button_female) {
+//            gender = getResources().getString(R.string.female).toLowerCase();
+//            Toast.makeText(SignupActivity.this, "gender: " + gender, Toast.LENGTH_LONG).show();
+//
+//        }
+//        // TODO: make sure to have one button checked and remove this line
+//        else {
+//            gender = null;
+//            Toast.makeText(SignupActivity.this, "gender: " + gender, Toast.LENGTH_LONG).show();
+//        }
+//
+//
+//    }
 
 
 }

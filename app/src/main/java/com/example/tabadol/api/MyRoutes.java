@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tabadol.HomeActivity;
+import com.example.tabadol.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -467,6 +468,9 @@ public class MyRoutes {
 
     }
 
+<<<<<<< HEAD
+    public void signup(SignupForm formFields){
+=======
     public void exchangeOffer(long id, long myPostId){
         headers = new HashMap<>();
         jwt = getJwtFormSharedPreferences();
@@ -504,6 +508,7 @@ public class MyRoutes {
     }
 
     public void signup(String username, String email, String firstname, String lastname, String password, String confirm, String skills, String bio, String phone, String image){
+>>>>>>> main
 
 //
 //        headers = new HashMap<>();
@@ -513,25 +518,35 @@ public class MyRoutes {
 
 
 
-       Call<ResponseJson> call = tabadolAPI.signup(new SignupForm(username,email,firstname,lastname, password,confirm,skills,bio,phone,image));
+       Call<ResponseJson> call = tabadolAPI.signup(formFields);
 
        call.enqueue(new Callback<ResponseJson>() {
            @Override
            public void onResponse(Call<ResponseJson> call, Response<ResponseJson> response) {
                Log.v("HTTP_Request: ","code: "+response.code());
                ResponseJson resJson = response.body();
-               Log.v("HTTP_Request: ","response : "+resJson.getMessage());
+//               Log.v("HTTP_Request: ","response : "+resJson.getMessage());
+
+               if(response.isSuccessful()){
+                   Toast.makeText(context,"Registered Successfully!",Toast.LENGTH_LONG).show();
+                   Intent loginIntent = new Intent(context, LoginActivity.class);
+                   context.startActivity(loginIntent);
+               }
+               else{
+                   Toast.makeText(context,"Email or Username is already exist!",Toast.LENGTH_LONG).show();
+               }
+
            }
 
            @Override
            public void onFailure(Call<ResponseJson> call, Throwable t) {
 
-        Log.e("HTTP_Request: ","Request failed.. something wrong in your request !  \n"+t.getMessage());
+                Log.e("HTTP_Request: ","Request failed.. something wrong in your request !  \n"+t.getMessage());
 
                new Handler().postDelayed(new Runnable() {
                    @Override
                    public void run() {
-                      signup(username,email,firstname,lastname, password,confirm,skills,bio,phone,image);
+                      signup(formFields);
                    }
                }, 500);
                return;

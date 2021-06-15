@@ -59,7 +59,6 @@ public class UserProfile extends AppCompatActivity {
 
         Intent userIntent = getIntent();
         long id = userIntent.getLongExtra("id",0);
-        Toast.makeText(this, id+"", Toast.LENGTH_SHORT).show();
         if(id == 0)
             myRoutes.getLoggedInUser();
 
