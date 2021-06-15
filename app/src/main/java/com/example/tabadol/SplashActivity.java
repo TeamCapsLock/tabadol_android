@@ -22,7 +22,7 @@ public class SplashActivity extends AppCompatActivity {
 
 
         myRoutes = MyRoutes.getMyRoutesInstanse(this);
-        myRoutes.logout();
+//        myRoutes.logout();
 
 
 

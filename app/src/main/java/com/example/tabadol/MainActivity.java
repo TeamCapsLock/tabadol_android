@@ -76,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
 
 //        myRoutes.declinedOffer(21,20);
 //        myRoutes.exchangeOffer(23,24);
-
+//        myRoutes.deletePost(22);
+//        myRoutes.getRatedUsers();
 
 
     }//end onCreate()
