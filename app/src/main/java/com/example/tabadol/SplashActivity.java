@@ -18,7 +18,9 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashActivity.this, UserProfile.class);
+//                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+//                Intent intent = new Intent(SplashActivity.this, FollowingUser.class);
+                Intent intent = new Intent(SplashActivity.this, FollowersList.class);
                 startActivity(intent);
                 finish();
 
