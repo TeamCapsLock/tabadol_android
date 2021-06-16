@@ -1,13 +1,18 @@
 package com.example.tabadol;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.transition.TransitionManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -27,8 +32,9 @@ import java.util.List;
 
 public class UserProfile extends AppCompatActivity {
     TextView usernameTv, ratingTv, followingTv, followersTv, nameTv, bioTv, skillsTv, emailTv, phoneTv, ratingTitleTv, followingTitleTv,followersTitleTv;
-    ImageView image;
+    ImageView image,coverImage, phone, email;
     ListView listView ;
+    View line;
     private Intent intent;
     User loggedInUser = null;
     Button followButton, unfollowButton, rateButton;
@@ -38,11 +44,36 @@ public class UserProfile extends AppCompatActivity {
 
     User currentUser = null;
     MyRoutes  myRoutes;
+
+
+    private  boolean isOpen = false;
+    private ConstraintSet layout1,layout2;
+    private ConstraintLayout constraintLayout;
+    private ImageView imageViewPhoto;
+
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
         setTitle(R.string.user_profile);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //        usernameTv = findViewById(R.id.username_user_profile_act);
         ratingTv = findViewById(R.id.rating_user_profile_act);
@@ -63,6 +94,11 @@ public class UserProfile extends AppCompatActivity {
         rateButton = findViewById(R.id.rate_button_user_profile_act);
         rateValue = findViewById(R.id.number_rate_value_user_profile_act);
         buttonsLayout =findViewById(R.id.linearLayout2);
+        coverImage =findViewById(R.id.imageView_cover);
+        email = findViewById(R.id.email_icon);
+        phone = findViewById(R.id.phone_icon);
+        line = findViewById(R.id.line);
+
 
 
 
@@ -168,13 +204,17 @@ public class UserProfile extends AppCompatActivity {
         nameTv.setVisibility(View.VISIBLE);
         bioTv.setVisibility(View.VISIBLE);
         skillsTv.setVisibility(View.VISIBLE);
-//        emailTv.setVisibility(View.VISIBLE);
-//        phoneTv.setVisibility(View.VISIBLE);
+        emailTv.setVisibility(View.VISIBLE);
+        phoneTv.setVisibility(View.VISIBLE);
         image.setVisibility(View.VISIBLE);
         listView.setVisibility(View.VISIBLE);
         followersTitleTv.setVisibility(View.VISIBLE);
         followingTitleTv.setVisibility(View.VISIBLE);
         ratingTitleTv.setVisibility(View.VISIBLE);
+        coverImage.setVisibility(View.VISIBLE);
+        phone.setVisibility(View.VISIBLE);
+        email.setVisibility(View.VISIBLE);
+        line.setVisibility(View.VISIBLE);
 
         List<Long> myFollowingIds = myRoutes.getMyFollowingIds2();
         List<Long> myRatedIds = myRoutes.getRatedUsers2();
@@ -202,7 +242,7 @@ public class UserProfile extends AppCompatActivity {
         Post_User_Profile_Adapter post_user_profile_adapter = new Post_User_Profile_Adapter(this,posts);
         listView.setAdapter(post_user_profile_adapter);
 
-
+//        coverImage
         RequestOptions requestOptions=new RequestOptions();
         requestOptions.placeholder(R.drawable.male_icon);
         requestOptions.error(R.drawable.male_icon);
@@ -212,6 +252,53 @@ public class UserProfile extends AppCompatActivity {
                 .apply(requestOptions)
                 .circleCrop()
                 .into(image);
+
+        RequestOptions requestOptions2 =new RequestOptions();
+        requestOptions.placeholder(R.drawable.male_icon);
+        requestOptions.error(R.drawable.male_icon);
+
+        Glide.with(UserProfile.this)
+                .load(currentUser.getImage())
+                .apply(requestOptions)
+                .circleCrop()
+                .into(coverImage);
+
+
+
+
+
+// user profile xml animation
+        Window w = getWindow();
+        w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        layout1 = new ConstraintSet();
+        layout2 = new ConstraintSet();
+
+
+        constraintLayout = findViewById(R.id.constraint_layout);
+        layout2.clone(this, R.layout.profile_expanded);
+        layout1.clone(constraintLayout);
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(!isOpen){
+                    TransitionManager.beginDelayedTransition(constraintLayout);
+                    layout2.applyTo(constraintLayout);
+                    isOpen = !isOpen;
+
+                }else{
+                    TransitionManager.beginDelayedTransition(constraintLayout);
+                    layout1.applyTo(constraintLayout);
+                    isOpen = !isOpen;
+
+                }
+
+
+
+            }
+        });
+
+
 
 
     }

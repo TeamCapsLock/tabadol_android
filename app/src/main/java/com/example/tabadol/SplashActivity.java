@@ -38,12 +38,15 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
 
+//                myRoutes.logout();
+
 
 
                 Intent intent;
                 if( currentPassword != null && currentUsername != null) {
 //                    intent = new Intent(SplashActivity.this, HomeActivity.class);
                     intent = new Intent(SplashActivity.this, HomeActivity.class);
+//                    intent = new Intent(SplashActivity.this, MainActivity.class);
                 }
                 else{
                      intent = new Intent(SplashActivity.this, LoginActivity.class);
