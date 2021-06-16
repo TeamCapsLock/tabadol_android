@@ -43,8 +43,9 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
         // set the title of the activity
-        setTitle(R.string.signup);
-
+//        setTitle(R.string.signup);
+        if(getSupportActionBar() != null)
+            getSupportActionBar().hide();
 
         // find the views from activity_signup
         firstname = findViewById(R.id.edit_text_firstname);

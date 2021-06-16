@@ -7,48 +7,59 @@
     android:layout_height="@dimen/list_view_item_height">
 
     <TextView
-        android:id="@+id/rating_user_list"
-        android:layout_width="216dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="@dimen/padding"
-        android:layout_marginBottom="@dimen/padding"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/circle_background_user_image_posts_page"
-        app:layout_constraintTop_toBottomOf="@+id/user_name_user_list"
-        tools:text="@string/post_body" />
-
-    <TextView
         android:id="@+id/user_name_user_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/padding"
-        android:layout_marginTop="12dp"
-        app:layout_constraintStart_toEndOf="@+id/circle_background_user_image_posts_page"
+        android:layout_marginStart="@dimen/horizontal_space"
+        android:layout_marginBottom="@dimen/padding"
+        tools:text="@string/username"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/user_image_users_list"
+        app:layout_constraintTop_toBottomOf="@+id/full_name_user_list" />
+
+    <TextView
+        android:id="@+id/full_name_user_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/horizontal_space"
+        android:layout_marginTop="24dp"
+        android:textColor="@color/custom_blue"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/user_image_users_list"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/firstname" />
+        tools:text="AndalQader Mhemed" />
 
     <ImageView
         android:id="@+id/user_image_users_list"
         android:layout_width="@dimen/image_width_post"
         android:layout_height="@dimen/image_height_post"
         android:layout_marginStart="@dimen/padding"
-        android:layout_marginEnd="@dimen/padding"
-        app:layout_constraintBottom_toBottomOf="@+id/circle_background_user_image_posts_page"
-        app:layout_constraintEnd_toEndOf="@+id/circle_background_user_image_posts_page"
-        app:layout_constraintStart_toStartOf="@+id/circle_background_user_image_posts_page"
-        app:layout_constraintTop_toTopOf="@+id/circle_background_user_image_posts_page" />
-
-    <ImageView
-        android:id="@+id/circle_background_user_image_posts_page"
-        android:layout_width="@dimen/circle_width"
-        android:layout_height="@dimen/circle_width"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/circle_image"
+        android:layout_marginTop="@dimen/padding"
+        android:layout_marginBottom="@dimen/padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_rating_users_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding"
+        android:layout_marginEnd="@dimen/padding"
+        android:textColor="@color/custom_blue"
+        tools:text="4.5"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="24dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="@dimen/padding"
+        android:layout_marginEnd="@dimen/padding"
+        app:layout_constraintEnd_toStartOf="@+id/text_rating_users_list"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:srcCompat="@drawable/ic_baseline_star_rate_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
