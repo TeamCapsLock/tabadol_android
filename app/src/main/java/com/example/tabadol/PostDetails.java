@@ -79,16 +79,13 @@ public class PostDetails extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.edit_profile_menu, menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
     Intent intent;
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.edit_profile_item_menu:
-                Toast.makeText(getApplicationContext(), "edit profile", Toast.LENGTH_SHORT).show();
-                return true;
             case R.id.home_menu_item:
                 intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
