@@ -26,7 +26,7 @@ public class PostAdapter extends ArrayAdapter<Post> {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.post_list, parent, false);
 
         Post currentPost = getItem(position);
-        TextView postBody = listItemView.findViewById(R.id.rating_user_list);
+        TextView postBody = listItemView.findViewById(R.id.full_name_user_list);
         TextView postCategory = listItemView.findViewById(R.id.text_post_category);
         TextView postOwnerName = listItemView.findViewById(R.id.user_name_user_list);
         ImageView postOwnerImage = listItemView.findViewById(R.id.user_image_posts_page);
