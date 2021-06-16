@@ -2,8 +2,13 @@ package com.example.tabadol;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.transition.Explode;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -12,6 +17,8 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.tabadol.api.MyRoutes;
+
 public class AddPost extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private String text;
@@ -19,8 +26,7 @@ public class AddPost extends AppCompatActivity implements AdapterView.OnItemSele
     private EditText postBody;
     private RadioGroup radioGroup;
     private Spinner spinner;
-
-
+    private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +68,32 @@ public class AddPost extends AppCompatActivity implements AdapterView.OnItemSele
         else {
             type = null;
             Toast.makeText(AddPost.this, " " + type, Toast.LENGTH_LONG).show();
+        }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.home_menu_item:
+                intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.my_profile_item_menu:
+                intent = new Intent(getApplicationContext(), UserProfile.class);
+                startActivity(intent);
+                return true;
+            case R.id.logout_item_menu:
+                MyRoutes myRoutes = MyRoutes.getMyRoutesInstanse(this);
+                myRoutes.logout();
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 

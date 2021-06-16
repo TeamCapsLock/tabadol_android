@@ -7,6 +7,8 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -30,7 +32,7 @@ public class UserProfile extends AppCompatActivity {
     TextView usernameTv, ratingTv, followingTv, followersTv, nameTv, bioTv, skillsTv, emailTv, phoneTv, ratingTitleTv, followingTitleTv,followersTitleTv;
     ImageView image;
     ListView listView ;
-
+    private Intent intent;
     User loggedInUser = null;
     MyRoutes  myRoutes;
     @Override
@@ -163,4 +165,36 @@ public class UserProfile extends AppCompatActivity {
 
 
 
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.edit_profile_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.edit_profile_item_menu:
+                Toast.makeText(getApplicationContext(), "edit profile", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.home_menu_item:
+                intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.my_profile_item_menu:
+                intent = new Intent(getApplicationContext(), UserProfile.class);
+                startActivity(intent);
+                return true;
+            case R.id.logout_item_menu:
+                MyRoutes myRoutes = MyRoutes.getMyRoutesInstanse(this);
+                myRoutes.logout();
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }

@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tabadol.HomeActivity;
+import com.example.tabadol.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -76,6 +77,7 @@ public class MyRoutes {
         myEdit.clear();
 
         myEdit.commit();
+        context.startActivity(new Intent(context, LoginActivity.class));
     }
 
     public  void getJWT_token(String username, String password){

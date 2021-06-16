@@ -43,7 +43,9 @@
     <string name="home">Home</string>
     <string name="post_body">this is fake post to style the views</string>
     <string name="user_profile">Profile</string>
+    <string name="my_profile">My Profile</string>
 
+    <string name="logout">Log out</string>
 
     <!--    Categories -->
     <string name="education">Education</string>
