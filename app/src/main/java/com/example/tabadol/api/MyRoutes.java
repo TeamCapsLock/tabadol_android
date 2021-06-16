@@ -78,6 +78,7 @@ public class MyRoutes {
         myEdit.clear();
 
         myEdit.commit();
+        context.startActivity(new Intent(context, LoginActivity.class));
     }
 
     public  void getJWT_token(String username, String password){
