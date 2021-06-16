@@ -5,6 +5,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -20,6 +21,7 @@ public class OffersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
+        setTitle("My offers");
         ViewPager viewPager = findViewById(R.id.viewpager);
         OffersFragmentPagerAdapter offersFragmentPagerAdapter = new OffersFragmentPagerAdapter(getSupportFragmentManager(), this);
         viewPager.setAdapter(offersFragmentPagerAdapter);
@@ -48,6 +50,19 @@ public class OffersActivity extends AppCompatActivity {
                 MyRoutes myRoutes = MyRoutes.getMyRoutesInstanse(this);
                 myRoutes.logout();
                 finish();
+                return true;
+
+            case R.id.myOffers_item_menu:
+                MyRoutes.getMyRoutesInstanse(this).getSentOffers();
+                MyRoutes.getMyRoutesInstanse(this).getReceivedOffers();
+                MyRoutes.getMyRoutesInstanse(this).getFinishedOffers();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent offersIntent = new Intent(OffersActivity.this, OffersActivity.class);
+                        startActivity(offersIntent);
+                    }
+                }, 1500);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

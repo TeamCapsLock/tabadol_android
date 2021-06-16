@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.transition.Explode;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -70,6 +71,8 @@ public class AddPost extends AppCompatActivity implements AdapterView.OnItemSele
             Toast.makeText(AddPost.this, " " + type, Toast.LENGTH_LONG).show();
         }
     }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -91,6 +94,18 @@ public class AddPost extends AppCompatActivity implements AdapterView.OnItemSele
                 MyRoutes myRoutes = MyRoutes.getMyRoutesInstanse(this);
                 myRoutes.logout();
                 finish();
+                return true;
+            case R.id.myOffers_item_menu:
+                MyRoutes.getMyRoutesInstanse(this).getSentOffers();
+                MyRoutes.getMyRoutesInstanse(this).getReceivedOffers();
+                MyRoutes.getMyRoutesInstanse(this).getFinishedOffers();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent offersIntent = new Intent(AddPost.this, OffersActivity.class);
+                        startActivity(offersIntent);
+                    }
+                }, 1500);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

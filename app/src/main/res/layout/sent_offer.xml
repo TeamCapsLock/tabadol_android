@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/sent_image"
+        android:id="@+id/image_for_receiver_sent_offers_frg"
         android:layout_width="@dimen/image_width_and_height"
         android:layout_height="@dimen/image_width_and_height"
         android:layout_marginStart="@dimen/padding"
@@ -16,17 +16,17 @@
         app:srcCompat="@drawable/male_icon" />
 
     <TextView
-        android:id="@+id/sent_username"
+        android:id="@+id/username_for_reciever_sent_offers_frg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="76dp"
         android:layout_marginTop="60dp"
         android:text="@string/username"
-        app:layout_constraintStart_toEndOf="@+id/sent_image"
+        app:layout_constraintStart_toEndOf="@+id/image_for_receiver_sent_offers_frg"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/sent_category2"
+        android:id="@+id/category_for_sender_post_sent_offers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="296dp"
@@ -37,7 +37,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/sent_category"
+        android:id="@+id/sent_category_for_receiver_sent_offers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -48,38 +48,38 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/sent_body"
+        android:id="@+id/body_for_receiver_post_sent_offers_frg"
         android:layout_width="348dp"
         android:layout_height="103dp"
         android:layout_marginTop="68dp"
         android:text="@string/lorem"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sent_username" />
+        app:layout_constraintTop_toBottomOf="@+id/username_for_reciever_sent_offers_frg" />
 
     <ImageView
-        android:id="@+id/sent_image2"
+        android:id="@+id/image_for_sender_sent_offers_frg"
         android:layout_width="@dimen/image_width_and_height"
         android:layout_height="@dimen/image_width_and_height"
         android:layout_marginStart="84dp"
         android:layout_marginTop="28dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sent_body"
+        app:layout_constraintTop_toBottomOf="@+id/body_for_receiver_post_sent_offers_frg"
         app:srcCompat="@drawable/female_icon" />
 
     <TextView
-        android:id="@+id/sent_username2"
+        android:id="@+id/username_for_sender_sent_offers_frg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:text="@string/username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toEndOf="@+id/sent_image2"
-        app:layout_constraintTop_toBottomOf="@+id/sent_body" />
+        app:layout_constraintStart_toEndOf="@+id/image_for_sender_sent_offers_frg"
+        app:layout_constraintTop_toBottomOf="@+id/body_for_receiver_post_sent_offers_frg" />
 
     <TextView
-        android:id="@+id/sent_body2"
+        android:id="@+id/body_for_sender_post_sent_offers_frg"
         android:layout_width="268dp"
         android:layout_height="80dp"
         android:layout_marginTop="32dp"
@@ -87,6 +87,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.591"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sent_image2" />
+        app:layout_constraintTop_toBottomOf="@+id/image_for_sender_sent_offers_frg" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.example.tabadol.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.tabadol.R;
+import com.example.tabadol.UserProfile;
 import com.example.tabadol.api.Offer;
 import com.example.tabadol.api.Post;
 
@@ -27,15 +29,15 @@ public class SentOffersAdapter extends ArrayAdapter<Offer> {
             offersList = LayoutInflater.from(getContext()).inflate(R.layout.sent_offer, parent, false);
 
         Offer currentOffer = getItem(position);
-        ImageView receiverImage = offersList.findViewById(R.id.sent_image);
-        TextView receiverUsername = offersList.findViewById(R.id.sent_username);
-        TextView receiverCategory = offersList.findViewById(R.id.sent_category);
-        TextView receiverPostBody = offersList.findViewById(R.id.sent_body);
+        ImageView receiverImage = offersList.findViewById(R.id.image_for_receiver_sent_offers_frg);
+        TextView receiverUsername = offersList.findViewById(R.id.username_for_reciever_sent_offers_frg);
+        TextView receiverCategory = offersList.findViewById(R.id.sent_category_for_receiver_sent_offers);
+        TextView receiverPostBody = offersList.findViewById(R.id.body_for_receiver_post_sent_offers_frg);
 
-        ImageView senderImageView = offersList.findViewById(R.id.sent_image2);
-        TextView senderUsername = offersList.findViewById(R.id.sent_username2);
-        TextView senderPostBody = offersList.findViewById(R.id.sent_body2);
-        TextView senderCategory = offersList.findViewById(R.id.sent_category2);
+        ImageView senderImageView = offersList.findViewById(R.id.image_for_sender_sent_offers_frg);
+        TextView senderUsername = offersList.findViewById(R.id.username_for_sender_sent_offers_frg);
+        TextView senderPostBody = offersList.findViewById(R.id.body_for_sender_post_sent_offers_frg);
+        TextView senderCategory = offersList.findViewById(R.id.category_for_sender_post_sent_offers);
 
 
         RequestOptions requestOptions=new RequestOptions();
@@ -66,6 +68,24 @@ public class SentOffersAdapter extends ArrayAdapter<Offer> {
         senderPostBody.setText(sourcePost.getBody());
 
 
+        receiverUsername.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent userProfileIntent = new Intent(parent.getContext(), UserProfile.class);
+                userProfileIntent.putExtra("id",destinationPost.getUser().getId());
+                parent.getContext().startActivity(userProfileIntent);
+
+            }
+        });
+
+        senderUsername.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent userProfileIntent = new Intent(parent.getContext(), UserProfile.class);
+                userProfileIntent.putExtra("id",sourcePost.getUser().getId());
+                parent.getContext().startActivity(userProfileIntent);
+            }
+        });
 
         return offersList;
     }

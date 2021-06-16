@@ -23,7 +23,6 @@
         <activity android:name=".HomeActivity"
             />
         <activity android:name=".UserProfile" />
-        <activity android:name=".MyProfileActivity" />
         <activity android:name=".PostDetails" />
         <activity android:name=".AddPost"
             android:parentActivityName=".HomeActivity"/>
