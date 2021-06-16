@@ -18,13 +18,12 @@
         <Button
             android:id="@+id/add_post_button_add_post_activity"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/button_height"
+            android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="32dp"
             android:background="@drawable/button"
-            android:padding="@dimen/padding"
             android:text="@string/add_post"
             android:textAllCaps="false"
             android:textSize="@dimen/button_text_size"
@@ -34,18 +33,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinner_category_add_post_activity" />
 
-    <EditText
-        android:id="@+id/body_add_post_activity"
-        android:layout_width="348dp"
-        android:layout_height="105dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="@dimen/margin_top"
-        android:layout_marginEnd="32dp"
-        android:gravity="top"
-        android:hint="@string/product_service_hint"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <EditText
+            android:id="@+id/body_add_post_activity"
+            android:layout_width="match_parent"
+            android:layout_height="105dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="@dimen/margin_top"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/square_border"
+            android:gravity="top"
+            android:padding="5dp"
+            android:textSize="14sp"
+            android:hint="@string/product_service_hint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
         android:id="@+id/radio_group_type"
