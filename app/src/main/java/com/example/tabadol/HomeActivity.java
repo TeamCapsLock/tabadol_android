@@ -7,6 +7,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -66,6 +67,19 @@ public class HomeActivity extends AppCompatActivity {
                 MyRoutes myRoutes = MyRoutes.getMyRoutesInstanse(this);
                 myRoutes.logout();
                 finish();
+                return true;
+
+            case R.id.myOffers_item_menu:
+                MyRoutes.getMyRoutesInstanse(this).getSentOffers();
+                MyRoutes.getMyRoutesInstanse(this).getReceivedOffers();
+                MyRoutes.getMyRoutesInstanse(this).getFinishedOffers();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent offersIntent = new Intent(HomeActivity.this, OffersActivity.class);
+                        startActivity(offersIntent);
+                    }
+                }, 1500);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

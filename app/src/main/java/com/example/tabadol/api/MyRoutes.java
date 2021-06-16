@@ -37,8 +37,9 @@ public class MyRoutes {
     private ArrayList<User> followersList = null;
     private List<Long> ratedUsersids= null;
     private ArrayList<Offer> sentOffers = null;
-    private ArrayList<Offer> receivedOffers;
-    private ArrayList<Offer> finishedOffers;
+    private ArrayList<Offer> receivedOffers = null;
+    private List<Offer> finishedOffers = null;
+    private long loggedInId;
 
 
     private static MyRoutes myRoutesInstanse = null;
@@ -56,6 +57,9 @@ public class MyRoutes {
             getRatedUsers();
             getFollowingList(this.username);
             getSentOffers();
+            getFinishedOffers();
+            getReceivedOffers();
+            getLoggedInUser();
        }
 
    }
@@ -83,10 +87,30 @@ public class MyRoutes {
         myEdit.clear();
 
         myEdit.commit();
+
+        this.posts = null;
+        this.allUsers = null;
+        this.ratedUsersids = null;
+        this.username = null;
+        this.password = null;
+        this.user = null;
+        this.myFollowingIds = null;
+        this.followingList = null;
+        this.followersList = null;
+        this.sentOffers = null;
+        this.receivedOffers = null;
+        this.finishedOffers = null;
+        this.user = null;
+        this.loggedInId = -1;
+
         context.startActivity(new Intent(context, LoginActivity.class));
     }
 
     public  void getJWT_token(String username, String password){
+
+       if(username == null || password == null)
+           return;
+
         Call<AuthenticationResponse> call = tabadolAPI.getJWT_token(new AuthenticationRequest(username,password));
         call.enqueue(new Callback<AuthenticationResponse>() {
             @Override
@@ -126,6 +150,15 @@ public class MyRoutes {
                     if(sentOffers == null)
                         getSentOffers();
 
+                    if(finishedOffers == null)
+                        getFinishedOffers();
+
+                    if(receivedOffers == null)
+                        getReceivedOffers();
+
+                    if(MyRoutes.this.user == null )
+                        getLoggedInUser();
+
 
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -161,6 +194,9 @@ public class MyRoutes {
 
 
     public void getPosts(){
+        if(jwt == null)
+            return;
+
         headers = new HashMap<>();
         jwt = getJwtFormSharedPreferences();
 
@@ -196,6 +232,8 @@ public class MyRoutes {
         });
     }
     public  void getLoggedInUser(){
+        if(jwt == null)
+            return;
         jwt = getJwtFormSharedPreferences();
         headers = new HashMap<>();
         headers.put("Authorization", "Bearer "+jwt);
@@ -207,6 +245,7 @@ public class MyRoutes {
                 Log.v("HTTP_Request: ","code: "+response.code());
                 Log.v("HTTP_Request: ","code: "+response.body().toString());
                 MyRoutes.this.user = response.body();
+                loggedInId = user.getId();
             }
 
             @Override
@@ -267,6 +306,9 @@ public class MyRoutes {
     //
     public void getAllUsers(){
 
+        if(jwt == null)
+            return;
+
         headers = new HashMap<>();
         jwt = getJwtFormSharedPreferences();
 
@@ -303,6 +345,9 @@ public class MyRoutes {
     }
 
     public void getFollowingList(String username){
+
+        if(jwt == null)
+            return;
 
         headers = new HashMap<>();
         jwt = getJwtFormSharedPreferences();
@@ -419,6 +464,9 @@ public class MyRoutes {
 
     public void  getReceivedOffers(){
 
+        if(jwt == null)
+            return;
+
         headers = new HashMap<>();
         jwt = getJwtFormSharedPreferences();
 
@@ -431,6 +479,21 @@ public class MyRoutes {
             public void onResponse(Call<List<ReceivedOffers>> call, Response<List<ReceivedOffers>> response) {
                 Log.v("HTTP_Request: ","code: "+response.code());
                 Log.v("HTTP_Request: ","code: "+response.body());
+
+
+                List<ReceivedOffers> receivedOffers2 = response.body();
+                List<Offer> offers2 = new ArrayList<>();
+
+                for(ReceivedOffers offer: receivedOffers2){
+                    Post destPost = offer.getPostHasReceivedTheOffers();
+
+                    for(Post post: offer.getTheReceivedOffersForOnePost()){
+                        Post sourcePost = post;
+                        Offer newOffer = new Offer(sourcePost, destPost);
+                        offers2.add(newOffer);
+                    }
+                }
+                MyRoutes.this.receivedOffers = (ArrayList<Offer>) offers2;
 
             }
 
@@ -451,6 +514,9 @@ public class MyRoutes {
 
     }
     public void getSentOffers(){
+        if(jwt == null){
+            return;
+        }
         headers = new HashMap<>();
         jwt = getJwtFormSharedPreferences();
 
@@ -495,6 +561,11 @@ public class MyRoutes {
 
     }
     public void getFinishedOffers(){
+
+        if(jwt == null)
+            return;
+
+
         headers = new HashMap<>();
         jwt = getJwtFormSharedPreferences();
 
@@ -506,6 +577,33 @@ public class MyRoutes {
             public void onResponse(Call<List<FinishedOffers>> call, Response<List<FinishedOffers>> response) {
                 Log.v("HTTP_Request: ","code: "+response.code());
                 Log.v("HTTP_Request: ","code: "+response.body());
+
+                List<FinishedOffers> currentFinishedOffers = response.body();
+
+                List<Offer> offers2 = new ArrayList<>();
+
+                for ( FinishedOffers offer : currentFinishedOffers){
+
+
+                    Post destPost = offer.getPostHasReceivedTheOffers();
+                    if(destPost != null){
+                        for(Post post : offer.getTheReceivedOffersForOnePost()){
+                            Post sourcePost = post;
+                            Offer newOffer = new Offer(sourcePost, destPost);
+                            offers2.add(newOffer);
+                        }
+                    }
+                    else{
+                        Post sourcePost2 =  offer.getPostThatSentTheOffers();
+                        for(Post post : offer.getPostsThatReceivedTheSentOffer()){
+                            Post destPost2 = post;
+                            Offer newOffer = new Offer(sourcePost2, destPost2);
+                            offers2.add(newOffer);
+                        }
+                    }
+
+                }
+                MyRoutes.this.finishedOffers = offers2;
 
             }
 
@@ -881,6 +979,10 @@ public class MyRoutes {
             });
         }
     public void getRatedUsers(){
+
+            if(jwt == null)
+                return;
+
             headers = new HashMap<>();
             jwt = getJwtFormSharedPreferences();
             headers.put("Authorization", "Bearer "+jwt);
@@ -1008,5 +1110,17 @@ public class MyRoutes {
 
     public ArrayList<Offer> getSentOffers2(){
         return this.sentOffers;
+    }
+
+    public List<Offer> getFinishedOffers2(){
+        return this.finishedOffers;
+    }
+
+    public List<Offer> getReceivedOffers2(){
+        return this.receivedOffers;
+    }
+
+    public Long getLoggedInID(){
+       return loggedInId;
     }
 }

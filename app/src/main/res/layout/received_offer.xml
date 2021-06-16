@@ -6,98 +6,109 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/sent_image"
-        android:layout_width="@dimen/image_width_and_height"
-        android:layout_height="@dimen/image_width_and_height"
-        android:layout_marginStart="@dimen/padding"
-        android:layout_marginTop="@dimen/padding"
+        android:id="@+id/image_for_receiver_recieved_offers_frg"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/male_icon" />
 
     <TextView
-        android:id="@+id/sent_username"
+        android:id="@+id/username_for_reciever_received_offers_frg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:text="@string/username"
-        app:layout_constraintStart_toEndOf="@+id/sent_image"
+        app:layout_constraintStart_toEndOf="@+id/image_for_receiver_recieved_offers_frg"
+        app:layout_constraintTop_toBottomOf="@+id/category_for_receiver_post_received_offers" />
+
+    <TextView
+        android:id="@+id/category_for_receiver_post_received_offers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/category"
+        android:textColor="@color/custom_blue"
+        app:layout_constraintStart_toEndOf="@+id/image_for_receiver_recieved_offers_frg"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/sent_category2"
+        android:id="@+id/category_for_sender_post_received_offers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
         android:text="@string/category"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/custom_blue"/>
+        android:textColor="@color/custom_blue"
+        app:layout_constraintStart_toEndOf="@+id/image_for_sender_received_offers_frg"
+        app:layout_constraintTop_toBottomOf="@+id/body_for_receiver_post_received_offers_frg" />
 
     <TextView
-        android:id="@+id/sent_body"
+        android:id="@+id/body_for_receiver_post_received_offers_frg"
         android:layout_width="348dp"
         android:layout_height="103dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="4dp"
         android:text="@string/lorem"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.253"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sent_username" />
+        app:layout_constraintTop_toBottomOf="@+id/image_for_receiver_recieved_offers_frg" />
 
     <ImageView
-        android:id="@+id/sent_image2"
-        android:layout_width="@dimen/image_width_and_height"
-        android:layout_height="@dimen/image_width_and_height"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="28dp"
+        android:id="@+id/image_for_sender_received_offers_frg"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sent_body"
+        app:layout_constraintTop_toBottomOf="@+id/body_for_receiver_post_received_offers_frg"
         app:srcCompat="@drawable/female_icon" />
 
     <TextView
-        android:id="@+id/sent_username2"
+        android:id="@+id/username_for_sender_received_offers_frg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="6dp"
         android:text="@string/username"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toEndOf="@+id/sent_image2"
-        app:layout_constraintTop_toBottomOf="@+id/sent_body" />
+        app:layout_constraintStart_toEndOf="@+id/image_for_sender_received_offers_frg"
+        app:layout_constraintTop_toBottomOf="@+id/category_for_sender_post_received_offers" />
 
     <TextView
-        android:id="@+id/sent_body2"
-        android:layout_width="268dp"
+        android:id="@+id/body_for_sender_post_received_offers_frg"
+        android:layout_width="281dp"
         android:layout_height="80dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="4dp"
         android:text="@string/lorem"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.591"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sent_image2" />
+        app:layout_constraintTop_toBottomOf="@+id/image_for_sender_received_offers_frg" />
 
     <Button
-        android:id="@+id/received_accept"
+        android:id="@+id/received_accept_offer_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="36dp"
         android:text="@string/accept"
-        app:layout_constraintEnd_toStartOf="@+id/received_reject"
-        app:layout_constraintHorizontal_bias="0.643"
+        app:layout_constraintEnd_toStartOf="@+id/received_offers_reject_button"
+        app:layout_constraintHorizontal_bias="0.796"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sent_body2" />
+        app:layout_constraintTop_toBottomOf="@+id/body_for_sender_post_received_offers_frg" />
 
     <Button
-        android:id="@+id/received_reject"
+        android:id="@+id/received_offers_reject_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="68dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="96dp"
         android:background="@drawable/button_red"
         android:text="@string/reject"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sent_body2" />
+        app:layout_constraintTop_toBottomOf="@+id/body_for_sender_post_received_offers_frg" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

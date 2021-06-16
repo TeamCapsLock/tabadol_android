@@ -31,7 +31,7 @@ public class UserProfile extends AppCompatActivity {
     ListView listView ;
     private Intent intent;
     User loggedInUser = null;
-    Button followButton, unfollowButton, rateButton, editProfileButton;
+    Button followButton, unfollowButton, rateButton;
     EditText rateValue;
     LinearLayout buttonsLayout ;
     long id;
@@ -63,7 +63,6 @@ public class UserProfile extends AppCompatActivity {
         rateButton = findViewById(R.id.rate_button_user_profile_act);
         rateValue = findViewById(R.id.number_rate_value_user_profile_act);
         buttonsLayout =findViewById(R.id.linearLayout2);
-        editProfileButton = findViewById(R.id.editProfileButton_User_profile_act);
 
 
 
@@ -130,14 +129,6 @@ public class UserProfile extends AppCompatActivity {
            }
        });
 
-       editProfileButton.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               Intent editProfileIntent = new Intent(UserProfile.this, EditProfileActivity.class);
-               editProfileIntent.putExtra("user",currentUser);
-               startActivity(editProfileIntent);
-           }
-       });
     }
 
 
@@ -202,7 +193,7 @@ public class UserProfile extends AppCompatActivity {
             }
         }
         else {
-            editProfileButton.setVisibility(View.VISIBLE);
+//            editProfileButton.setVisibility(View.VISIBLE);
         }
 
         List<Post> posts = currentUser.getPosts();
@@ -255,7 +246,13 @@ public class UserProfile extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.edit_profile_menu, menu);
+
+        if(  id == 0 || id == myRoutes.getLoggedInID() ){
+            getMenuInflater().inflate(R.menu.edit_profile_menu, menu);
+        }
+        else{
+            getMenuInflater().inflate(R.menu.menu, menu);
+        }
         return true;
     }
 
@@ -263,7 +260,9 @@ public class UserProfile extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.edit_profile_item_menu:
-                Toast.makeText(getApplicationContext(), "edit profile", Toast.LENGTH_SHORT).show();
+                Intent editProfileIntent = new Intent(UserProfile.this, EditProfileActivity.class);
+                editProfileIntent.putExtra("user",currentUser);
+                startActivity(editProfileIntent);
                 return true;
             case R.id.home_menu_item:
                 intent = new Intent(getApplicationContext(), HomeActivity.class);
@@ -277,6 +276,19 @@ public class UserProfile extends AppCompatActivity {
                 MyRoutes myRoutes = MyRoutes.getMyRoutesInstanse(this);
                 myRoutes.logout();
                 finish();
+                return true;
+
+            case R.id.myOffers_item_menu:
+                MyRoutes.getMyRoutesInstanse(this).getSentOffers();
+                MyRoutes.getMyRoutesInstanse(this).getReceivedOffers();
+                MyRoutes.getMyRoutesInstanse(this).getFinishedOffers();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent offersIntent = new Intent(UserProfile.this, OffersActivity.class);
+                        startActivity(offersIntent);
+                    }
+                }, 1500);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
