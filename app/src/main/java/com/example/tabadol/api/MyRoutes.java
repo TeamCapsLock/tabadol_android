@@ -40,7 +40,15 @@ public class MyRoutes {
     private ArrayList<Offer> receivedOffers = null;
     private List<Offer> finishedOffers = null;
     private long loggedInId;
+    private  boolean isLoggedIn = false;
 
+    public boolean isLoggedIn() {
+        return isLoggedIn;
+    }
+
+    public void setLoggedIn(boolean loggedIn) {
+        isLoggedIn = loggedIn;
+    }
 
     private static MyRoutes myRoutesInstanse = null;
 
@@ -51,16 +59,9 @@ public class MyRoutes {
        username = getUsernameFormSharedPreferences();
        password = getPasswordFormSharedPreferences();
        jwt = getJwtFormSharedPreferences();
-       if(jwt != null){
-            getPosts();
-            getAllUsers();
-            getRatedUsers();
-            getFollowingList(this.username);
-            getSentOffers();
-            getFinishedOffers();
-            getReceivedOffers();
-            getLoggedInUser();
-       }
+       if(username != null && password != null)
+           getJWT_token(username,password);
+
 
    }
 
@@ -102,6 +103,7 @@ public class MyRoutes {
         this.finishedOffers = null;
         this.user = null;
         this.loggedInId = -1;
+        this.isLoggedIn = false;
 
         context.startActivity(new Intent(context, LoginActivity.class));
     }
@@ -139,33 +141,23 @@ public class MyRoutes {
 
                     myEdit.commit();
 
-                    if(posts == null){
-                        getPosts();
-                        getAllUsers();
+                    getPosts();
+                    getAllUsers();
+                    getFollowingList(username);
+                    getRatedUsers();
+                    getSentOffers();
+                    getFinishedOffers();
+                    getReceivedOffers();
+                    getLoggedInUser();
 
-                    }
-                    if(myFollowingIds == null)
-                        getFollowingList(username);
-
-                    if(sentOffers == null)
-                        getSentOffers();
-
-                    if(finishedOffers == null)
-                        getFinishedOffers();
-
-                    if(receivedOffers == null)
-                        getReceivedOffers();
-
-                    if(MyRoutes.this.user == null )
-                        getLoggedInUser();
-
+                    isLoggedIn = true;
 
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         context.startActivity(homeIntent);
                     }
-                }, 3000);
+                }, 4000);
 
 
             }

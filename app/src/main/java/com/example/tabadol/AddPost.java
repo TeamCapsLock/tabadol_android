@@ -5,24 +5,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.transition.Explode;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.tabadol.api.AddPostForm;
 import com.example.tabadol.api.MyRoutes;
 
 public class AddPost extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private String text;
+    private String category;
     private String type;
     private EditText postBody;
     private RadioGroup radioGroup;
@@ -33,21 +33,47 @@ public class AddPost extends AppCompatActivity implements AdapterView.OnItemSele
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_post);
 
-        postBody = findViewById(R.id.edit_text_details);
+        postBody = findViewById(R.id.body_add_post_activity);
         radioGroup = findViewById(R.id.radio_group_type);
-        spinner = findViewById(R.id.add_post_spinner);
+        spinner = findViewById(R.id.spinner_category_add_post_activity);
+        Button addPostButton =  findViewById(R.id.add_post_button_add_post_activity);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.categories, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
+        RadioButton productType = findViewById(R.id.radio_product);
+        productType.setChecked(true);
+
+        addPostButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addPostButton.setEnabled(false);
+                AddPostForm addPostForm = new AddPostForm(postBody.getText().toString(),category,type,0);
+                MyRoutes.getMyRoutesInstanse(AddPost.this).addPost(addPostForm.getBody(),addPostForm.getCategory(),addPostForm.getType(),addPostForm.getWeight());
+                Intent userProfileIntent = new Intent(AddPost.this, UserProfile.class);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        startActivity(userProfileIntent);
+                    }
+                },500);
+
+            }
+        });
+
+
+
+
+
+
 
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-       text = parent.getItemAtPosition(position).toString();
+       category = parent.getItemAtPosition(position).toString();
     }
 
     @Override
@@ -59,16 +85,9 @@ public class AddPost extends AppCompatActivity implements AdapterView.OnItemSele
         boolean isChecked = ((RadioButton)view).isChecked();
         if(view.getId() == R.id.radio_product) {
             type = getResources().getString(R.string.product).toLowerCase();
-            Toast.makeText(AddPost.this, " " + type, Toast.LENGTH_LONG).show();
         }
         else if(view.getId() == R.id.radio_service) {
             type = getResources().getString(R.string.service).toLowerCase();
-            Toast.makeText(AddPost.this, " " + type, Toast.LENGTH_LONG).show();
-        }
-        // TODO: make sure to have one button checked and remove this line
-        else {
-            type = null;
-            Toast.makeText(AddPost.this, " " + type, Toast.LENGTH_LONG).show();
         }
     }
 
