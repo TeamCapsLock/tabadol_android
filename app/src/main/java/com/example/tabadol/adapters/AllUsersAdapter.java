@@ -31,12 +31,13 @@ public class AllUsersAdapter extends ArrayAdapter<User> {
         User user = getItem(position);
         ImageView userImage = listItemView.findViewById(R.id.user_image_users_list);
         TextView username = listItemView.findViewById(R.id.user_name_user_list);
-        TextView rating = listItemView.findViewById(R.id.rating_user_list);
+        TextView fullname = listItemView.findViewById(R.id.full_name_user_list);
+        TextView rating = listItemView.findViewById(R.id.text_rating_users_list);
 
 
         username.setText(user.getUsername());
         rating.setText(user.getRating().toString());
-
+        fullname.setText(user.getFirstname() + " "  + user.getLastname());
         RequestOptions requestOptions=new RequestOptions();
         requestOptions.placeholder(R.drawable.male_icon);
         requestOptions.error(R.drawable.male_icon);

@@ -46,7 +46,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // set the activity tile
-        setTitle(R.string.login);
+//        setTitle(R.string.login);
+        if(getSupportActionBar() != null)
+            getSupportActionBar().hide();
 
         myRoutes = MyRoutes.getMyRoutesInstanse(this);
         String currentUsername = myRoutes.getUsernameFormSharedPreferences();

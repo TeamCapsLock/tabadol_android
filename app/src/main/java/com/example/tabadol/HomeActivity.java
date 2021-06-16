@@ -23,7 +23,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
-        setTitle(R.string.home);
+        setTitle(R.string.app_name);
 
         ViewPager viewPager = findViewById(R.id.viewpager);
         viewPager.setAdapter(new HomeFragmentPagerAdapter(getSupportFragmentManager(), this));
