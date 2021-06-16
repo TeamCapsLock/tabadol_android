@@ -9,6 +9,8 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +25,7 @@ public class PostDetails extends AppCompatActivity {
 
     TextView detailsBody,username,category,type,date;
     ImageView imageView;
+    Button makeOfferButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,7 @@ public class PostDetails extends AppCompatActivity {
         type=findViewById(R.id.details_type);
         imageView=findViewById(R.id.details_profile_image);
         date=findViewById(R.id.details_date);
+        makeOfferButton = findViewById(R.id.details_make_offer);
 
 
 
@@ -61,22 +65,27 @@ public class PostDetails extends AppCompatActivity {
                 .circleCrop()
                 .into(imageView);
 
+        makeOfferButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent selectPostIntent = new Intent(PostDetails.this, SelectPostActivity.class);
+                selectPostIntent.putExtra("id",post.getId());
+                startActivity(selectPostIntent);
+            }
+        });
 
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.edit_profile_menu, menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
     Intent intent;
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.edit_profile_item_menu:
-                Toast.makeText(getApplicationContext(), "edit profile", Toast.LENGTH_SHORT).show();
-                return true;
             case R.id.home_menu_item:
                 intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);

@@ -22,14 +22,15 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+//        logoutLocallyForTest();
 
         myRoutes = MyRoutes.getMyRoutesInstanse(this);
 
 
 
 
-        String currentUsername = myRoutes.getUsernameFormSharedPreferences();
-        String currentPassword = myRoutes.getPasswordFormSharedPreferences();
+//        Intent intent = new Intent(SplashActivity.this, TestCardActivity.class);
+//        startActivity(intent);
 
         if(getSupportActionBar() != null)
             getSupportActionBar().hide();
@@ -38,21 +39,25 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
 
+                boolean isLoggedIn = myRoutes.isLoggedIn();
 
-
-                Intent intent;
-                if( currentPassword != null && currentUsername != null) {
-//                    intent = new Intent(SplashActivity.this, HomeActivity.class);
-                    intent = new Intent(SplashActivity.this, HomeActivity.class);
-                }
-                else{
+                if(! isLoggedIn) {
+                     Intent intent;
                      intent = new Intent(SplashActivity.this, LoginActivity.class);
+                     startActivity(intent);
+                     finish();
                 }
-                startActivity(intent);
-                finish();
 
             }
         }, 4000);
+    }
+
+    public void logoutLocallyForTest(){
+        SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref",Context.MODE_PRIVATE);
+        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+        myEdit.clear();
+
+        myEdit.commit();
     }
 
 }
