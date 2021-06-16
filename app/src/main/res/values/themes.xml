@@ -24,4 +24,9 @@
     <style name="Theme.Tabadol.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Tabadol.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Background" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:background">#ff0000</item>
+    </style>
+
 </resources>

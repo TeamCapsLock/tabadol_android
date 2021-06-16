@@ -30,13 +30,13 @@ public class ReceivedOffersFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.activity_list_view, container, false);
-        ArrayList<Post> posts = new ArrayList<>();
-        for(int i=0; i<15; i++)
-            posts.add(new Post(1,"body", i+"", "type", 6, true, "createdAt", "offer type", new User()));
-        PostAdapter postAdapter = new PostAdapter(getActivity(), posts);
-        ListView listView = rootView.findViewById(R.id.listView);
-        listView.setAdapter(postAdapter);
+        View rootView = inflater.inflate(R.layout.received_offer, container, false);
+//        ArrayList<Post> posts = new ArrayList<>();
+//        for(int i=0; i<15; i++)
+//            posts.add(new Post(1,"body", i+"", "type", 6, true, "createdAt", "offer type", new User()));
+//        PostAdapter postAdapter = new PostAdapter(getActivity(), posts);
+//        ListView listView = rootView.findViewById(R.id.listView);
+//        listView.setAdapter(postAdapter);
         return rootView;
     }
 }

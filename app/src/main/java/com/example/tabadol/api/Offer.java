@@ -3,6 +3,7 @@ package com.example.tabadol.api;
 public class Offer {
     private Post sourcePost;
     private Post destinationPost;
+
     public Offer(Post s, Post d){
         this.sourcePost = s;
         this.destinationPost = d;
