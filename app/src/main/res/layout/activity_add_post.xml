@@ -1,79 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddPost">
 
-    <Button
-        android:id="@+id/add_post_button"
-        android:layout_width="@dimen/button_width"
-        android:layout_height="@dimen/button_height"
-        android:layout_marginTop="@dimen/margin_top"
-        android:layout_marginBottom="180dp"
-        android:background="@drawable/button"
-        android:padding="@dimen/padding"
-        android:text="@string/add_post"
-        android:textAllCaps="false"
-        android:textSize="@dimen/button_text_size"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_post_spinner"
-        app:layout_constraintVertical_bias="0.904" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+        <Button
+            android:id="@+id/add_post_button_add_post_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/button"
+            android:padding="@dimen/padding"
+            android:text="@string/add_post"
+            android:textAllCaps="false"
+            android:textSize="@dimen/button_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_category_add_post_activity" />
 
     <EditText
-        android:gravity="top"
-        android:id="@+id/edit_text_details"
-        android:layout_width="379dp"
-        android:layout_height="202dp"
-        android:layout_marginStart="@dimen/padding"
+        android:id="@+id/body_add_post_activity"
+        android:layout_width="348dp"
+        android:layout_height="105dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="@dimen/margin_top"
-        android:layout_marginEnd="@dimen/padding"
+        android:layout_marginEnd="32dp"
+        android:gravity="top"
         android:hint="@string/product_service_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
         android:id="@+id/radio_group_type"
-        android:layout_width="387dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="@dimen/padding"
-        android:layout_marginTop="@dimen/margin_top"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_marginStart="32dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.068"
+        android:padding="5dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_details">
+        app:layout_constraintTop_toBottomOf="@+id/textView12">
 
         <RadioButton
             android:id="@+id/radio_product"
-            android:layout_width="@dimen/radio_option_width"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:onClick="getType"
             android:text="@string/product" />
 
         <RadioButton
             android:id="@+id/radio_service"
-            android:layout_width="@dimen/radio_option_width"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="getType"
             android:text="@string/service" />
+
     </RadioGroup>
 
     <Spinner
-        android:id="@+id/add_post_spinner"
-        android:layout_width="282dp"
+        android:id="@+id/spinner_category_add_post_activity"
+        android:layout_width="140dp"
         android:layout_height="33dp"
-        android:layout_marginTop="@dimen/margin_top"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.124"
+        android:layout_marginStart="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:text="Category:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radio_group_type" />
 
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="Post Type:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/body_add_post_activity" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

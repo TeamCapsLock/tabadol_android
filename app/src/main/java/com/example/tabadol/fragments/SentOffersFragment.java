@@ -39,7 +39,7 @@ public class SentOffersFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.activity_list_view, container, false);
         offers = new ArrayList<>();
         myRoutes = MyRoutes.getMyRoutesInstanse(getActivity());
-        myRoutes.getSentOffers();
+//        myRoutes.getSentOffers();
         offers = myRoutes.getSentOffers2();
 
         SentOffersAdapter sentOffersAdapter = new SentOffersAdapter(getActivity(), offers);
