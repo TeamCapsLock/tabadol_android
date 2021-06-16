@@ -36,6 +36,7 @@ public class EditProfileActivity extends AppCompatActivity {
         Button saveChangesButton = findViewById(R.id.save_edits_button_edit_profile_act);
 
 
+
         Intent userProfileIntent = getIntent();
         User user = userProfileIntent.getParcelableExtra("user");
 
