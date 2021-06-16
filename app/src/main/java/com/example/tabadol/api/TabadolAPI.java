@@ -1,21 +1,16 @@
 package com.example.tabadol.api;
 
-import java.net.ResponseCache;
 import java.util.List;
 import java.util.Map;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.FieldMap;
-import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.HeaderMap;
-import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
-import retrofit2.http.Url;
 
 
 public interface TabadolAPI {
@@ -81,6 +76,26 @@ public interface TabadolAPI {
 
     @PUT("jedit-profile")
     Call<User> EditProfile(@HeaderMap Map<String,String> headers, @Body EditProfileForm editProfile);
+
+
+    //
+    @POST("jaddPost")
+    Call<ResponseJson> addPost(@HeaderMap Map<String,String> headers, @Body AddPostForm addPostForm);
+
+    @POST("jacceptoffer")
+    Call<ResponseJson> acceptOffer(@HeaderMap Map<String,String> headers, @Body AcceptOffer acceptOffer);
+
+    @POST("jdeclineoffer")
+    Call<ResponseJson> declinedOffer(@HeaderMap Map<String,String> headers, @Body AcceptOffer acceptOffer);
+
+    @POST("jexchange/{id}")
+    Call<ResponseJson> exchangeOffer(@HeaderMap Map<String,String> headers,@Path("id") long id, @Body  ExchangeOffer exchange);
+
+@DELETE("jdelete-post/{id}")
+    Call<ResponseJson> deletePost(@HeaderMap Map<String,String> headers,@Path("id") long id);
+
+@GET("jratedusers")
+Call<RatedUsers> ratedUsers(@HeaderMap Map<String,String> headers);
 
 
 }

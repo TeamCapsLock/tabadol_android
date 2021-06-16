@@ -1,6 +1,7 @@
 package com.example.tabadol.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,15 @@ public class AllUsersAdapter extends ArrayAdapter<User> {
                 .apply(requestOptions)
                 .circleCrop()
                 .into(userImage);
+
+        listItemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent userProfileIntent = new Intent(parent.getContext(),UserProfile.class);
+                userProfileIntent.putExtra("id", user.getId());
+                parent.getContext().startActivity(userProfileIntent);
+            }
+        });
 
         return listItemView;
     }

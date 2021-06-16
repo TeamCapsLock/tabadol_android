@@ -13,8 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tabadol"
         android:usesCleartextTraffic="true">
+
         <activity android:name=".FollowersList"
             android:parentActivityName=".UserProfile"/>
+        <activity android:name=".EditProfileActivity"></activity>
+
         <activity android:name=".FollowingUser" />
         <activity android:name=".OffersActivity" />
         <activity android:name=".HomeActivity"

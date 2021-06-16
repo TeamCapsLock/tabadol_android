@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 //        setContentView(R.layout.activity_main);
 
         MyRoutes myRoutes = MyRoutes.getMyRoutesInstanse(this);
-        myRoutes.getJWT_token("mhd.sad","1234");
+//        myRoutes.getJWT_token("mhd.sad","1234");
 //        myRoutes.getJWT_token("ramayaser66", "1234");
 //        myRoutes.getJWT_token("mhd.sad", "1234");
 //        myRoutes.getJWT_token("A", "1234");
@@ -65,10 +65,19 @@ public class MainActivity extends AppCompatActivity {
 //    myRoutes.EditProfile("B","B","B","B","0781234567","https://images.thdstatic.com/productImages/72b9aa15-5112-4dff-9639-b68170e00530/svn/house-numbers-address-letters-3582b-b-64_1000.jpg");
 //
 //
-//        myRoutes.UnfollowUser("A");
+//            myRoutes.UnfollowUser("A");
 //            myRoutes.FollowUser("A");
 //            myRoutes.RateUser("mhd.sad", 4);
 
+//        myRoutes.addPost("this is my test post4 ... added from android", "programming","service",2);
+       // myRoutes.acceptOffer(7,17);
+       // myRoutes.acceptOffer(7,17);
+//        myRoutes.acceptOffer(24,23);
+
+//        myRoutes.declinedOffer(21,20);
+//        myRoutes.exchangeOffer(23,24);
+//        myRoutes.deletePost(22);
+//        myRoutes.getRatedUsers();
 
 
     }//end onCreate()
