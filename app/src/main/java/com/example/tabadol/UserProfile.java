@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 //import com.bumptech.glide.Glide;
 //import com.bumptech.glide.request.RequestOptions;
@@ -28,17 +29,14 @@ public class UserProfile extends AppCompatActivity {
     TextView usernameTv, ratingTv, followingTv, followersTv, nameTv, bioTv, skillsTv, emailTv, phoneTv, ratingTitleTv, followingTitleTv,followersTitleTv;
     ImageView image;
     ListView listView ;
-<<<<<<< HEAD
     private Intent intent;
     User loggedInUser = null;
-=======
     Button followButton, unfollowButton, rateButton, editProfileButton;
     EditText rateValue;
     LinearLayout buttonsLayout ;
     long id;
 
     User currentUser = null;
->>>>>>> main
     MyRoutes  myRoutes;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

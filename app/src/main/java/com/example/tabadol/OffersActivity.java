@@ -14,6 +14,7 @@ import com.google.android.material.tabs.TabLayout;
 
 public class OffersActivity extends AppCompatActivity {
     private Intent intent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

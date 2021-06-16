@@ -31,6 +31,8 @@ public class SentOffers {
         this.postsThatReceivedTheSentOffer = postsThatReceivedTheSentOffer;
     }
 
+
+
     @Override
     public String toString() {
         return "SentOffers{" +

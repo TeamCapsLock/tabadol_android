@@ -40,8 +40,8 @@ public class SplashActivity extends AppCompatActivity {
 
                 Intent intent;
                 if( currentPassword != null && currentUsername != null) {
-                    intent = new Intent(SplashActivity.this, HomeActivity.class);
-//                    intent = new Intent(SplashActivity.this, MainActivity.class);
+//                    intent = new Intent(SplashActivity.this, HomeActivity.class);
+                    intent = new Intent(SplashActivity.this, OffersActivity.class);
                 }
                 else{
                      intent = new Intent(SplashActivity.this, LoginActivity.class);

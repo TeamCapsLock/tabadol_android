@@ -36,6 +36,10 @@ public class MyRoutes {
     private ArrayList<User> followingList = null;
     private ArrayList<User> followersList = null;
     private List<Long> ratedUsersids= null;
+    private ArrayList<Offer> sentOffers = null;
+    private ArrayList<Offer> receivedOffers;
+    private ArrayList<Offer> finishedOffers;
+
 
     private static MyRoutes myRoutesInstanse = null;
 
@@ -51,6 +55,7 @@ public class MyRoutes {
             getAllUsers();
             getRatedUsers();
             getFollowingList(this.username);
+            getSentOffers();
        }
 
    }
@@ -113,9 +118,13 @@ public class MyRoutes {
                     if(posts == null){
                         getPosts();
                         getAllUsers();
+
                     }
                     if(myFollowingIds == null)
                         getFollowingList(username);
+
+                    if(sentOffers == null)
+                        getSentOffers();
 
 
                 new Handler().postDelayed(new Runnable() {
@@ -453,6 +462,18 @@ public class MyRoutes {
             public void onResponse(Call<List<SentOffers>> call, Response<List<SentOffers>> response) {
                 Log.v("HTTP_Request: ","code: "+response.code());
                 Log.v("HTTP_Request: ","code: "+response.body());
+                List<SentOffers> sent = response.body();
+                List<Offer> offers2 = new ArrayList<>();
+
+                for(SentOffers s: sent){
+                    Post sourcePost = s.getPostThatSentTheOffers();
+                    for(Post post: s.getPostsThatReceivedTheSentOffer()){
+                        Post destinationPost = post;
+                        Offer offer = new Offer(sourcePost, destinationPost);
+                        offers2.add(offer);
+                    }
+                }
+                MyRoutes.this.sentOffers = (ArrayList<Offer>) offers2;
 
 
             }
@@ -983,5 +1004,9 @@ public class MyRoutes {
 
     public List<Long> getMyFollowingIds2(){
        return this.myFollowingIds;
+    }
+
+    public ArrayList<Offer> getSentOffers2(){
+        return this.sentOffers;
     }
 }
