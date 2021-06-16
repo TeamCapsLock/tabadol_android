@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TestCardActivity"
+    android:background="@color/white_cream">
+
+    <LinearLayout
+        android:id="@+id/image_for_receiver_recieved_offers_frg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/blue_background_card"
+
+                >
+
+
+                <ImageView
+                    android:id="@+id/image_for_receiver_recieved_offers_frg_2"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="5dp"
+                    android:layout_marginBottom="0dp"
+                    android:src="@drawable/male_icon" />
+
+                <TextView
+                    android:id="@+id/username_for_reciever_received_offers_frg"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="@+id/image_for_receiver_recieved_offers_frg_2"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_toEndOf="@+id/image_for_receiver_recieved_offers_frg_2"
+                    android:fontFamily="serif-monospace"
+                    android:text="Username"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="5dp">
+
+                    <TextView
+                        android:id="@+id/date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif-monospace"
+                        android:text="Created At:"
+                        android:textColor="@android:color/holo_red_light"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+
+                        android:id="@+id/date_for_receiver_post_received_offers_frg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif-monospace"
+                        android:text="Date:"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/image_for_receiver_recieved_offers_frg_2"
+                    android:layout_marginTop="-10dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/category"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="serif-monospace"
+                            android:text="Category:"
+                            android:textColor="@android:color/holo_red_light"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/category_for_receiver_post_received_offers"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_toEndOf="@+id/category"
+                            android:fontFamily="serif-monospace"
+                            android:text="Category:"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/body_for_receiver_post_received_offers_frg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="serif-monospace"
+                        android:padding="7dp"
+                        android:scrollbarAlwaysDrawVerticalTrack="true"
+                        android:text="Body here:aasdfdlfjasdkfjqioejrkslfhaldjfafjqeoirtgthjfkadflafhqoejfdngajhfoqerfjefeoifjqeqlewjfqiortenfladhfurihfqegfjytruriwerpoqeir[qoejrefnadkfjoefjqfasfaoshfjklqerfjoaidljfqoerihqtrmtqretq,mqeriuqeproqerk.ndvncxvnoirejr"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/myblack_1"
+
+                >
+
+
+                <ImageView
+                    android:id="@+id/image_for_sender_received_offers_frg_2"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="5dp"
+                    android:layout_marginBottom="0dp"
+                    android:src="@drawable/male_icon" />
+
+                <TextView
+                    android:id="@+id/username_for_sender_received_offers_frg"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="@+id/image_for_sender_received_offers_frg_2"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_toEndOf="@+id/image_for_sender_received_offers_frg_2"
+                    android:fontFamily="serif-monospace"
+                    android:text="Username"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="5dp">
+
+                    <TextView
+                        android:id="@+id/date_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif-monospace"
+                        android:text="Created At:"
+                        android:textColor="@android:color/holo_red_light"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+
+                        android:id="@+id/date_for_sender_post_received_offers_frg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif-monospace"
+                        android:text="Date:"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/image_for_sender_received_offers_frg_2"
+                    android:layout_marginTop="-10dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/category_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="serif-monospace"
+                            android:text="Category:"
+                            android:textColor="@android:color/holo_red_light"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/category_for_sender_post_received_offers"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_toEndOf="@+id/category_2"
+                            android:fontFamily="serif-monospace"
+                            android:text="Category:"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/body_for_sender_post_received_offers_frg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="serif-monospace"
+                        android:padding="7dp"
+                        android:scrollbarAlwaysDrawVerticalTrack="true"
+                        android:text="Body here:aasdfdlfjasdkfjqioejrkslfhaldjfafjqeoirtgthjfkadflafhqoejfdngajhfoqerfjefeoifjqeqlewjfqiortenfladhfurihfqegfjytruriwerpoqeir[qoejrefnadkfjoefjqfasfaoshfjklqerfjoaidljfqoerihqtrmtqretq,mqeriuqeproqerk.ndvncxvnoirejr"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/received_accept_offer_button"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Accept" />
+
+                <Button
+
+                    android:id="@+id/received_offers_reject_button"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Reject" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginTop="-10dp"
+                android:background="#D71F1F1F" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</ScrollView>

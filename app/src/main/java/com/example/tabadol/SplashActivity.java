@@ -29,7 +29,8 @@ public class SplashActivity extends AppCompatActivity {
 
 
 
-
+//        Intent intent = new Intent(SplashActivity.this, TestCardActivity.class);
+//        startActivity(intent);
 
         if(getSupportActionBar() != null)
             getSupportActionBar().hide();

@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tabadol"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SelectPostActivity"></activity>
+        <activity android:name=".TestCardActivity"></activity>
+        <activity android:name=".SelectPostActivity" />
         <activity
             android:name=".FollowersList"
             android:parentActivityName=".UserProfile" />

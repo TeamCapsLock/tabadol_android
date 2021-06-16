@@ -35,15 +35,17 @@ public class ReceivedOffersAdapter extends ArrayAdapter<Offer> {
         Offer currentOffer = getItem(position);
 
 
-        ImageView receiverImage = offersList.findViewById(R.id.image_for_receiver_recieved_offers_frg);
+        ImageView receiverImage = offersList.findViewById(R.id.image_for_receiver_recieved_offers_frg_2);
         TextView receiverUsername = offersList.findViewById(R.id.username_for_reciever_received_offers_frg);
         TextView receiverCategory = offersList.findViewById(R.id.category_for_receiver_post_received_offers);
         TextView receiverPostBody = offersList.findViewById(R.id.body_for_receiver_post_received_offers_frg);
+        TextView receiverDate = offersList.findViewById(R.id.date_for_receiver_post_received_offers_frg);
 
-        ImageView senderImageView = offersList.findViewById(R.id.image_for_sender_received_offers_frg);
+        ImageView senderImageView = offersList.findViewById(R.id.image_for_sender_received_offers_frg_2);
         TextView senderUsername = offersList.findViewById(R.id.username_for_sender_received_offers_frg);
         TextView senderPostBody = offersList.findViewById(R.id.body_for_sender_post_received_offers_frg);
         TextView senderCategory = offersList.findViewById(R.id.category_for_sender_post_received_offers);
+        TextView senderDate = offersList.findViewById(R.id.date_for_sender_post_received_offers_frg);
 
         Button rejectButton = offersList.findViewById(R.id.received_offers_reject_button);
         Button acceptButton = offersList.findViewById(R.id.received_accept_offer_button);
@@ -133,6 +135,7 @@ public class ReceivedOffersAdapter extends ArrayAdapter<Offer> {
         receiverUsername.setText(destinationPost.getUser().getUsername());
         receiverCategory.setText(destinationPost.getCategory());
         receiverPostBody.setText(destinationPost.getBody());
+        receiverDate.setText(destinationPost.getCreatedAt().substring(0,10));
 
         Glide.with(parent)
                 .load(sourcePost.getUser().getImage())
@@ -143,6 +146,7 @@ public class ReceivedOffersAdapter extends ArrayAdapter<Offer> {
         senderUsername.setText(sourcePost.getUser().getUsername());
         senderCategory.setText(sourcePost.getCategory());
         senderPostBody.setText(sourcePost.getBody());
+        senderDate.setText(sourcePost.getCreatedAt().substring(0,10));
 
 
 
