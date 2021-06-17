@@ -1,92 +1,258 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".TestCardActivity"
+    android:background="@color/white_cream">
 
-    <ImageView
-        android:id="@+id/image_for_receiver_sent_offers_frg"
-        android:layout_width="@dimen/image_width_and_height"
-        android:layout_height="@dimen/image_width_and_height"
-        android:layout_marginStart="@dimen/padding"
-        android:layout_marginTop="@dimen/padding"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/male_icon" />
-
-    <TextView
-        android:id="@+id/username_for_reciever_sent_offers_frg"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="60dp"
-        android:text="@string/username"
-        app:layout_constraintStart_toEndOf="@+id/image_for_receiver_sent_offers_frg"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/category_for_sender_post_sent_offers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="296dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/category"
-        android:textColor="@color/custom_blue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
 
-    <TextView
-        android:id="@+id/sent_category_for_receiver_sent_offers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="36dp"
-        android:text="@string/category"
-        android:textColor="@color/custom_blue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/body_for_receiver_post_sent_offers_frg"
-        android:layout_width="348dp"
-        android:layout_height="103dp"
-        android:layout_marginTop="68dp"
-        android:text="@string/lorem"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username_for_reciever_sent_offers_frg" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/image_for_sender_sent_offers_frg"
-        android:layout_width="@dimen/image_width_and_height"
-        android:layout_height="@dimen/image_width_and_height"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/body_for_receiver_post_sent_offers_frg"
-        app:srcCompat="@drawable/female_icon" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/blue_background_card"
 
-    <TextView
-        android:id="@+id/username_for_sender_sent_offers_frg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:text="@string/username"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toEndOf="@+id/image_for_sender_sent_offers_frg"
-        app:layout_constraintTop_toBottomOf="@+id/body_for_receiver_post_sent_offers_frg" />
+                >
 
-    <TextView
-        android:id="@+id/body_for_sender_post_sent_offers_frg"
-        android:layout_width="268dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/lorem"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.591"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_for_sender_sent_offers_frg" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageView
+                    android:id="@+id/image_for_receiver_sent_offers_frg"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="5dp"
+                    android:layout_marginBottom="0dp"
+                    android:src="@drawable/male_icon" />
+
+                <TextView
+                    android:id="@+id/username_for_reciever_sent_offers_frg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="@+id/image_for_receiver_sent_offers_frg"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="30dp"
+
+                    android:layout_toEndOf="@+id/image_for_receiver_sent_offers_frg"
+                    android:fontFamily="serif-monospace"
+                    android:text="Username"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="5dp">
+
+                    <TextView
+
+                        android:id="@+id/date_for_receiver_post_send_offers_frg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif-monospace"
+                        android:text="Date:"
+                        android:textColor="@android:color/holo_red_light"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/image_for_receiver_sent_offers_frg"
+                    android:layout_marginTop="-10dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/category"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="serif-monospace"
+                            android:text="Category:"
+                            android:textColor="@android:color/holo_red_light"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/sent_category_for_receiver_sent_offers"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_toEndOf="@+id/category"
+                            android:fontFamily="serif-monospace"
+                            android:text="Category:"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/body_for_receiver_post_sent_offers_frg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="serif-monospace"
+                        android:padding="7dp"
+                        android:scrollbarAlwaysDrawVerticalTrack="true"
+                        android:text="Body here:aasdfdlfjasdkfjqioejrkslfhaldjfafjqeoirtgthjfkadflafhqoejfdngajhfoqerfjefeoifjqeqlewjfqiortenfladhfurihfqegfjytruriwerpoqeir[qoejrefnadkfjoefjqfasfaoshfjklqerfjoaidljfqoerihqtrmtqretq,mqeriuqeproqerk.ndvncxvnoirejr"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/myblack_1"
+
+                >
+
+
+                <ImageView
+                    android:id="@+id/image_for_sender_sent_offers_frg"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="5dp"
+                    android:layout_marginBottom="0dp"
+                    android:src="@drawable/male_icon" />
+
+                <TextView
+                    android:id="@+id/username_for_sender_sent_offers_frg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="@+id/image_for_sender_sent_offers_frg"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_toEndOf="@+id/image_for_sender_sent_offers_frg"
+                    android:fontFamily="serif-monospace"
+                    android:text="Username"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="5dp">
+
+                    <TextView
+
+                        android:id="@+id/date_for_sender_post_sent_offers_frg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif-monospace"
+                        android:text="Date:"
+                        android:textColor="@android:color/holo_red_light"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/image_for_sender_sent_offers_frg"
+                    android:layout_marginTop="-10dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/category_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="serif-monospace"
+                            android:text="Category:"
+                            android:textColor="@android:color/holo_red_light"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/category_for_sender_post_sent_offers"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_toEndOf="@+id/category_2"
+                            android:fontFamily="serif-monospace"
+                            android:text="Category:"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/body_for_sender_post_sent_offers_frg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="serif-monospace"
+                        android:padding="7dp"
+                        android:scrollbarAlwaysDrawVerticalTrack="true"
+                        android:text="Body here:aasdfdlfjasdkfjqioejrkslfhaldjfafjqeoirtgthjfkadflafhqoejfdngajhfoqerfjefeoifjqeqlewjfqiortenfladhfurihfqegfjytruriwerpoqeir[qoejrefnadkfjoefjqfasfaoshfjklqerfjoaidljfqoerihqtrmtqretq,mqeriuqeproqerk.ndvncxvnoirejr"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginTop="10dp"
+                android:background="#D71F1F1F" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</ScrollView>
