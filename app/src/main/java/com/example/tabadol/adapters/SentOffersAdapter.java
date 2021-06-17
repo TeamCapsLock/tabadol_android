@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.tabadol.PostDetails;
 import com.example.tabadol.R;
 import com.example.tabadol.UserProfile;
 import com.example.tabadol.api.Offer;
@@ -33,12 +34,13 @@ public class SentOffersAdapter extends ArrayAdapter<Offer> {
         TextView receiverUsername = offersList.findViewById(R.id.username_for_reciever_sent_offers_frg);
         TextView receiverCategory = offersList.findViewById(R.id.sent_category_for_receiver_sent_offers);
         TextView receiverPostBody = offersList.findViewById(R.id.body_for_receiver_post_sent_offers_frg);
+        TextView receiverDate = offersList.findViewById(R.id.date_for_receiver_post_send_offers_frg);
 
         ImageView senderImageView = offersList.findViewById(R.id.image_for_sender_sent_offers_frg);
         TextView senderUsername = offersList.findViewById(R.id.username_for_sender_sent_offers_frg);
         TextView senderPostBody = offersList.findViewById(R.id.body_for_sender_post_sent_offers_frg);
         TextView senderCategory = offersList.findViewById(R.id.category_for_sender_post_sent_offers);
-
+        TextView senderDate = offersList.findViewById(R.id.date_for_sender_post_sent_offers_frg);
 
         RequestOptions requestOptions=new RequestOptions();
         requestOptions.placeholder(R.drawable.male_icon);
@@ -56,6 +58,7 @@ public class SentOffersAdapter extends ArrayAdapter<Offer> {
         receiverUsername.setText(destinationPost.getUser().getUsername());
         receiverCategory.setText(destinationPost.getCategory());
         receiverPostBody.setText(destinationPost.getBody());
+        receiverDate.setText(destinationPost.getCreatedAt().substring(0,10));
 
         Glide.with(parent)
                 .load(sourcePost.getUser().getImage())
@@ -66,9 +69,9 @@ public class SentOffersAdapter extends ArrayAdapter<Offer> {
         senderUsername.setText(sourcePost.getUser().getUsername());
         senderCategory.setText(sourcePost.getCategory());
         senderPostBody.setText(sourcePost.getBody());
+        senderDate.setText(sourcePost.getCreatedAt().substring(0,10));
 
-
-        receiverUsername.setOnClickListener(new View.OnClickListener() {
+        receiverImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent userProfileIntent = new Intent(parent.getContext(), UserProfile.class);
@@ -78,7 +81,7 @@ public class SentOffersAdapter extends ArrayAdapter<Offer> {
             }
         });
 
-        senderUsername.setOnClickListener(new View.OnClickListener() {
+        senderImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent userProfileIntent = new Intent(parent.getContext(), UserProfile.class);
@@ -86,6 +89,31 @@ public class SentOffersAdapter extends ArrayAdapter<Offer> {
                 parent.getContext().startActivity(userProfileIntent);
             }
         });
+
+
+
+        receiverPostBody.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), PostDetails.class);
+                intent.putExtra("post",destinationPost);
+                intent.putExtra("user",destinationPost.getUser());
+                getContext().startActivity(intent);
+
+            }
+        });
+
+        senderPostBody.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), PostDetails.class);
+                intent.putExtra("post",sourcePost);
+                intent.putExtra("user",sourcePost.getUser());
+                getContext().startActivity(intent);
+
+            }
+        });
+
 
         return offersList;
     }

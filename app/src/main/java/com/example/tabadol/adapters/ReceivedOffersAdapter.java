@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.tabadol.OffersActivity;
+import com.example.tabadol.PostDetails;
 import com.example.tabadol.R;
 import com.example.tabadol.UserProfile;
 import com.example.tabadol.api.MyRoutes;
@@ -52,7 +53,7 @@ public class ReceivedOffersAdapter extends ArrayAdapter<Offer> {
         Post sourcePost = currentOffer.getSourcePost();
         Post destinationPost = currentOffer.getDestinationPost();
 
-        receiverUsername.setOnClickListener(new View.OnClickListener() {
+        receiverImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent userProfileIntent = new Intent(parent.getContext(), UserProfile.class);
@@ -62,7 +63,7 @@ public class ReceivedOffersAdapter extends ArrayAdapter<Offer> {
             }
         });
 
-        senderUsername.setOnClickListener(new View.OnClickListener() {
+        senderImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent userProfileIntent = new Intent(parent.getContext(), UserProfile.class);
@@ -117,6 +118,28 @@ public class ReceivedOffersAdapter extends ArrayAdapter<Offer> {
                         parent.getContext().startActivity(selfIntent);
                     }
                 }, 3000);
+            }
+        });
+
+        receiverPostBody.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), PostDetails.class);
+                intent.putExtra("post",destinationPost);
+                intent.putExtra("user",destinationPost.getUser());
+                getContext().startActivity(intent);
+
+            }
+        });
+
+        senderPostBody.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), PostDetails.class);
+                intent.putExtra("post",sourcePost);
+                intent.putExtra("user",sourcePost.getUser());
+                getContext().startActivity(intent);
+
             }
         });
 

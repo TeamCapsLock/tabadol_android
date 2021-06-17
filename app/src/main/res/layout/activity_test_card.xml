@@ -8,7 +8,6 @@
     android:background="@color/white_cream">
 
     <LinearLayout
-        android:id="@+id/image_for_receiver_recieved_offers_frg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -30,7 +29,7 @@
 
 
                 <ImageView
-                    android:id="@+id/image_for_receiver_recieved_offers_frg_2"
+                    android:id="@+id/image_for_receiver_sent_offers_frg"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_margin="5dp"
@@ -38,14 +37,15 @@
                     android:src="@drawable/male_icon" />
 
                 <TextView
-                    android:id="@+id/username_for_reciever_received_offers_frg"
-                    android:layout_width="100dp"
+                    android:id="@+id/username_for_reciever_sent_offers_frg"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="@+id/image_for_receiver_recieved_offers_frg_2"
+                    android:layout_alignParentRight="@+id/image_for_receiver_sent_offers_frg"
                     android:layout_marginStart="3dp"
                     android:layout_marginTop="30dp"
-                    android:layout_toEndOf="@+id/image_for_receiver_recieved_offers_frg_2"
+
+                    android:layout_toEndOf="@+id/image_for_receiver_sent_offers_frg"
                     android:fontFamily="serif-monospace"
                     android:text="Username"
                     android:textColor="@color/white"
@@ -72,7 +72,7 @@
 
                     <TextView
 
-                        android:id="@+id/date_for_receiver_post_received_offers_frg"
+                        android:id="@+id/date_for_receiver_post_send_offers_frg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="serif-monospace"
@@ -87,7 +87,7 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@+id/image_for_receiver_recieved_offers_frg_2"
+                    android:layout_below="@+id/image_for_receiver_sent_offers_frg"
                     android:layout_marginTop="-10dp"
                     android:layout_marginBottom="20dp"
                     android:orientation="vertical"
@@ -109,7 +109,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/category_for_receiver_post_received_offers"
+                            android:id="@+id/sent_category_for_receiver_sent_offers"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
@@ -123,7 +123,7 @@
                     </RelativeLayout>
 
                     <TextView
-                        android:id="@+id/body_for_receiver_post_received_offers_frg"
+                        android:id="@+id/body_for_receiver_post_sent_offers_frg"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:fontFamily="serif-monospace"
@@ -150,7 +150,7 @@
 
 
                 <ImageView
-                    android:id="@+id/image_for_sender_received_offers_frg_2"
+                    android:id="@+id/image_for_sender_sent_offers_frg"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_margin="5dp"
@@ -158,14 +158,14 @@
                     android:src="@drawable/male_icon" />
 
                 <TextView
-                    android:id="@+id/username_for_sender_received_offers_frg"
-                    android:layout_width="100dp"
+                    android:id="@+id/username_for_sender_sent_offers_frg"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="@+id/image_for_sender_received_offers_frg_2"
+                    android:layout_alignParentRight="@+id/image_for_sender_sent_offers_frg"
                     android:layout_marginStart="3dp"
                     android:layout_marginTop="30dp"
-                    android:layout_toEndOf="@+id/image_for_sender_received_offers_frg_2"
+                    android:layout_toEndOf="@+id/image_for_sender_sent_offers_frg"
                     android:fontFamily="serif-monospace"
                     android:text="Username"
                     android:textColor="@color/white"
@@ -192,7 +192,7 @@
 
                     <TextView
 
-                        android:id="@+id/date_for_sender_post_received_offers_frg"
+                        android:id="@+id/date_for_sender_post_sent_offers_frg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="serif-monospace"
@@ -207,7 +207,7 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@+id/image_for_sender_received_offers_frg_2"
+                    android:layout_below="@+id/image_for_sender_sent_offers_frg"
                     android:layout_marginTop="-10dp"
                     android:layout_marginBottom="20dp"
                     android:orientation="vertical"
@@ -229,7 +229,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/category_for_sender_post_received_offers"
+                            android:id="@+id/category_for_sender_post_sent_offers"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
@@ -243,7 +243,7 @@
                     </RelativeLayout>
 
                     <TextView
-                        android:id="@+id/body_for_sender_post_received_offers_frg"
+                        android:id="@+id/body_for_sender_post_sent_offers_frg"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:fontFamily="serif-monospace"
@@ -259,34 +259,11 @@
 
             </RelativeLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/received_accept_offer_button"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:text="Accept" />
-
-                <Button
-
-                    android:id="@+id/received_offers_reject_button"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:text="Reject" />
-            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="4dp"
-                android:layout_marginTop="-10dp"
+                android:layout_marginTop="10dp"
                 android:background="#D71F1F1F" />
         </LinearLayout>
 

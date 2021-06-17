@@ -8,10 +8,11 @@
     android:background="@color/white_cream">
 
     <LinearLayout
-        android:id="@+id/image_for_receiver_recieved_offers_frg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -62,24 +63,14 @@
                     android:layout_marginBottom="5dp">
 
                     <TextView
-                        android:id="@+id/date"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="serif-monospace"
-                        android:text="Created At:"
-                        android:textColor="@android:color/holo_red_light"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <TextView
 
                         android:id="@+id/date_for_receiver_post_received_offers_frg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="serif-monospace"
                         android:text="Date:"
-                        android:textColor="@color/white"
-                        android:textSize="12sp"
+                        android:textColor="@android:color/holo_red_light"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -106,7 +97,7 @@
                             android:fontFamily="serif-monospace"
                             android:text="Category:"
                             android:textColor="@android:color/holo_red_light"
-                            android:textSize="12sp"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -118,7 +109,7 @@
                             android:fontFamily="serif-monospace"
                             android:text="Category:"
                             android:textColor="@color/white"
-                            android:textSize="12sp"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
 
                     </RelativeLayout>
@@ -132,7 +123,7 @@
                         android:scrollbarAlwaysDrawVerticalTrack="true"
                         android:text="Body here:aasdfdlfjasdkfjqioejrkslfhaldjfafjqeoirtgthjfkadflafhqoejfdngajhfoqerfjefeoifjqeqlewjfqiortenfladhfurihfqegfjytruriwerpoqeir[qoejrefnadkfjoefjqfasfaoshfjklqerfjoaidljfqoerihqtrmtqretq,mqeriuqeproqerk.ndvncxvnoirejr"
                         android:textColor="@color/white"
-                        android:textSize="15sp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
 
@@ -182,24 +173,14 @@
                     android:layout_marginBottom="5dp">
 
                     <TextView
-                        android:id="@+id/date_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="serif-monospace"
-                        android:text="Created At:"
-                        android:textColor="@android:color/holo_red_light"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <TextView
 
                         android:id="@+id/date_for_sender_post_received_offers_frg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="serif-monospace"
                         android:text="Date:"
-                        android:textColor="@color/white"
-                        android:textSize="12sp"
+                        android:textColor="@android:color/holo_red_light"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -226,7 +207,7 @@
                             android:fontFamily="serif-monospace"
                             android:text="Category:"
                             android:textColor="@android:color/holo_red_light"
-                            android:textSize="12sp"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -238,7 +219,7 @@
                             android:fontFamily="serif-monospace"
                             android:text="Category:"
                             android:textColor="@color/white"
-                            android:textSize="12sp"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
 
                     </RelativeLayout>
@@ -252,7 +233,7 @@
                         android:scrollbarAlwaysDrawVerticalTrack="true"
                         android:text="Body here:aasdfdlfjasdkfjqioejrkslfhaldjfafjqeoirtgthjfkadflafhqoejfdngajhfoqerfjefeoifjqeqlewjfqiortenfladhfurihfqegfjytruriwerpoqeir[qoejrefnadkfjoefjqfasfaoshfjklqerfjoaidljfqoerihqtrmtqretq,mqeriuqeproqerk.ndvncxvnoirejr"
                         android:textColor="@color/white"
-                        android:textSize="15sp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
 
@@ -273,6 +254,7 @@
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
+                    android:backgroundTint="#275D8D"
                     android:text="Accept" />
 
                 <Button
@@ -281,7 +263,10 @@
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="Reject" />
+                    android:text="Reject"
+                    android:backgroundTint="#E99E2D2D"
+
+                    />
             </LinearLayout>
 
             <View

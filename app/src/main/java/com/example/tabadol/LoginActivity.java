@@ -55,6 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         String currentPassword = myRoutes.getPasswordFormSharedPreferences();
 
         if( currentPassword != null && currentUsername != null) {
+            myRoutes.getJWT_token(currentUsername, currentPassword);
 
             new Handler().postDelayed(new Runnable() {
                 @Override
