@@ -1,44 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
 
     <LinearLayout
+        android:id="@+id/listLayout"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="300dp"
+        android:background="@color/lightGray"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
 
-        <TextView
-            android:id="@+id/text_post_category_user_profile"
-            android:layout_width="wrap_content"
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            />
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
 
-        <TextView
-            android:id="@+id/text_post_body_user_profile"
-            android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sf_cartoonist_hand_bold_italic_main"
+                    android:text="Category: "
+                    android:textColor="@color/light_blue"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:id="@+id/text_post_category_user_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sf_cartoonist_hand_bold_italic_main"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="67dp"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Type: "
+                    android:textStyle="bold"
+                    android:textColor="@color/light_blue"
+                    android:fontFamily="@font/sf_cartoonist_hand_bold_italic_main"
+                    />
+
+                <TextView
+                    android:id="@+id/text_post_type_user_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Body: "
+                    android:textStyle="bold"
+                    android:fontFamily="@font/sf_cartoonist_hand_bold_italic_main"
+                    android:textColor="@color/light_blue"
+                    />
+                <TextView
+                    android:id="@+id/text_post_body_user_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/sf_cartoonist_hand_bold_italic_main"
+                    android:textColor="@color/black"
+                    />
+
+
+
+            </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            />
+            android:orientation="horizontal"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date: "
+                android:fontFamily="@font/sf_cartoonist_hand_bold_italic_main"
+                android:textColor="@color/light_blue"
+                android:textStyle="bold"/>
 
-        <TextView
-            android:id="@+id/text_post_type_user_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            />
+            <TextView
+                android:id="@+id/text_post_date_user_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/sf_cartoonist_hand_bold_italic_main" />
 
-        <TextView
-            android:id="@+id/text_post_date_user_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            />
+        </LinearLayout>
 
 
 
-    </LinearLayout>
+        </LinearLayout>
 
 </LinearLayout>
