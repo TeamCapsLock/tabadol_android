@@ -36,6 +36,7 @@ public class EditProfileActivity extends AppCompatActivity {
         Button saveChangesButton = findViewById(R.id.save_edits_button_edit_profile_act);
 
 
+
         Intent userProfileIntent = getIntent();
         User user = userProfileIntent.getParcelableExtra("user");
 
@@ -62,6 +63,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 MyRoutes.getMyRoutesInstanse(EditProfileActivity.this).EditProfile(firstName.getText().toString(), lastName.getText().toString(), skills.getText().toString(),bio.getText().toString(),phone.getText().toString(),image.getText().toString());
                 Intent userProfileIntent = new Intent(EditProfileActivity.this, UserProfile.class);
                 startActivity(userProfileIntent);
+                finish();
             }
         });
 

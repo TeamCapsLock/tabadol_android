@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.tabadol.api.MyRoutes;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 public class OffersActivity extends AppCompatActivity {
@@ -28,6 +30,9 @@ public class OffersActivity extends AppCompatActivity {
 
         TabLayout tabLayout = findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);
+        FloatingActionButton floatingActionButton = findViewById(R.id.fab);
+        floatingActionButton.setVisibility(View.INVISIBLE);
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

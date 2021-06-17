@@ -53,7 +53,7 @@ public class PostDetails extends AppCompatActivity {
         detailsBody.setText(post.getBody());
         category.setText(post.getCategory());
         type.setText(post.getType());
-        date.setText(post.getCreatedAt());
+        date.setText(post.getCreatedAt().substring(0,10));
 
         RequestOptions requestOptions=new RequestOptions();
         requestOptions.placeholder(R.drawable.male_icon);
